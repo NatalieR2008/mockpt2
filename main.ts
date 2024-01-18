@@ -54,7 +54,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . f f f . . . 
         `],
     500,
-    false
+    true
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
@@ -117,7 +117,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f f f . . . f f . . . 
         `],
     500,
-    false
+    true
     )
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
@@ -181,7 +181,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f f f . . . . . . 
         `],
     500,
-    false
+    true
     )
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -240,7 +240,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . f f f . . . 
         `],
     500,
-    false
+    true
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
@@ -248,6 +248,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
 })
 let player1: Sprite = null
+let mySprite = game.askForString("Choose Difficulty (E,M,H)")
+if (mySprite == "E") {
+    info.startCountdown(600)
+} else if (mySprite == "M") {
+    info.startCountdown(480)
+} else {
+    info.startCountdown(300)
+}
 player1 = sprites.create(img`
     . f f f . f f f f . f f f . 
     f f f f f c c c c f f f f f 
@@ -269,38 +277,3 @@ player1 = sprites.create(img`
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
 tiles.setCurrentTilemap(tilemap`level1`)
-let list = [sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . 5 5 5 5 5 5 . . . . . 
-    . . . . . 5 5 5 5 5 5 . . . . . 
-    . . . . . 5 5 . . 5 5 . . . . . 
-    . . . . . 5 5 . . 5 5 . . . . . 
-    . . . . . 5 5 5 5 5 5 . . . . . 
-    . . . . . 5 5 5 5 5 5 . . . . . 
-    . . . . . . . . . 5 5 . . . . . 
-    . . . . . . . . . 5 5 . . . . . 
-    . . . . . . . . . 5 5 . . . . . 
-    . . . . . . . 5 5 5 5 . . . . . 
-    . . . . . . . . . 5 5 . . . . . 
-    . . . . . . . 5 5 5 5 . . . . . 
-    . . . . . . . 5 5 5 5 . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Food), sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . b b b b b b . . . . . 
-    . . . . . b b b b b b . . . . . 
-    . . . . . b b . . b b . . . . . 
-    . . . . . b b . . b b . . . . . 
-    . . . . . b b b b b b . . . . . 
-    . . . . . b b b b b b . . . . . 
-    . . . . . . . . . b b . . . . . 
-    . . . . . . . . . b b . . . . . 
-    . . . . . . . . . b b . . . . . 
-    . . . . . . . b b b b . . . . . 
-    . . . . . . . . . b b . . . . . 
-    . . . . . . . b b b b . . . . . 
-    . . . . . . . b b b b . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Food)]
