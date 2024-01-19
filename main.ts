@@ -58,7 +58,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -245,7 +245,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level3`)
-    tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
 let player1: Sprite = null
 let mySprite = game.askForString("Choose Difficulty (E,M,H)")
@@ -274,6 +274,7 @@ player1 = sprites.create(img`
     . . . . f f f f f f . . . . 
     . . . . f f . . f f . . . . 
     `, SpriteKind.Player)
+player1.setPosition(120, 27)
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
 tiles.setCurrentTilemap(tilemap`level1`)

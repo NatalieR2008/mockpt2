@@ -101,6 +101,15 @@ namespace myTiles {
 2 . . . 2 . . . . . . . . . . 2 
 2 2 2 2 2 2 2 2 . 2 2 2 2 2 2 2 
 `, [myTiles.transparency16,myTiles.tile5,myTiles.tile6,myTiles.tile9,myTiles.tile10,sprites.dungeon.floorLight3,sprites.dungeon.floorLight2], TileScale.Sixteen);
+            case "level5":
+            case "level5":return tiles.createTilemap(hex`050006000c0b020b09040d0d0d03040d0d0d03040d0d0d03060d0d0d05070a010a08`, img`
+2 2 . 2 2 
+2 . . . 2 
+2 . . . 2 
+2 . . . 2 
+2 . . . 2 
+2 2 . 2 2 
+`, [myTiles.transparency16,myTiles.tile2,myTiles.tile4,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterEast1,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouth2,sprites.dungeon.greenOuterNorth2,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.floorLight0], TileScale.Sixteen);
         }
         return null;
     })
