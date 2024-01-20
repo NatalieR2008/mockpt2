@@ -57,6 +57,14 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function Items (list: any[]) {
+    text_list = [
+    "You go the basement key!",
+    "You got the closet key!",
+    "You got a pickax (Breaks cracked brick blocks)",
+    "You found a friend!"
+    ]
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
@@ -122,7 +130,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     if (true) {
-        game.splash("You got the closet key!")
+    	
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -247,6 +255,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
+let text_list: string[] = []
 let player1: Sprite = null
 let mySprite = game.askForString("Choose Difficulty (E,M,H)")
 if (mySprite == "E") {
