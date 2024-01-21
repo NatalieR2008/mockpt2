@@ -1,3 +1,7 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    player1.setPosition(120, 27)
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     player1,
@@ -60,6 +64,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level5`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
