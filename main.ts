@@ -96,9 +96,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
-    if (list.length == 4) {
-        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
-    }
+    inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
     otherSprite.setImage(img`
         . b b b b b b b b b b b b b b . 
         b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -178,7 +176,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
-    pickax = sprites.create(img`
+    pickaxe = sprites.create(img`
         . . . . . . . . . 5 . . . . . . 
         . . . . 5 . . . . 5 . . . 5 . . 
         . . . . 5 5 . . . 5 . 5 5 5 . . 
@@ -197,7 +195,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         . . . . . . . . . 5 . . . . . . 
         `, SpriteKind.powerup)
     tiles.setTileAt(location, sprites.dungeon.chestOpen)
-    tiles.placeOnTile(pickax, tiles.getTileLocation(13, 11))
+    tiles.placeOnTile(pickaxe, tiles.getTileLocation(13, 11))
     while (!(controller.A.isPressed())) {
         game.showLongText("You found a pickaxe! (Can break cracked brick tiles)", DialogLayout.Bottom)
     }
@@ -324,13 +322,67 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
-let pickax: Sprite = null
+let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
 let list: Image[] = []
 let inventory_1: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 inventory_1 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
+let inventory_2 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
+let inventory_3 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
+let inventory_4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -422,10 +474,10 @@ img`
     . . . . . . . . . . . . . . . . 
     `
 ]
-let mySprite = game.askForString("Choose Difficulty (E,M,H)", 1)
-if (mySprite == "E") {
+let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
+if (Difficulty == "E") {
     info.startCountdown(600)
-} else if (mySprite == "M") {
+} else if (Difficulty == "M") {
     info.startCountdown(480)
 } else {
     info.startCountdown(300)
@@ -473,7 +525,8 @@ player1.setPosition(120, 27)
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
 game.onUpdate(function () {
-    inventory_1.x = scene.cameraProperty(CameraProperty.X) - 70
-    inventory_1.y = scene.cameraProperty(CameraProperty.Y) - 50
-    inventory_1.z = 0
+    inventory_1.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_4.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
 })
