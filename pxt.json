@@ -3,8 +3,7 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "animation": "*",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "animation": "*"
     },
     "files": [
         "main.blocks",
