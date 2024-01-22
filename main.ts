@@ -416,7 +416,7 @@ sprites.create(img`
     . . . . . . . . b b . . . . . . 
     . . . . . . . b b b . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.powerup)
 ]
 let mySprite = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (mySprite == "E") {
