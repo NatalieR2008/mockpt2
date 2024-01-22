@@ -89,24 +89,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function Items (Chest: Sprite) {
-    Chest.setImage(img`
-        . b b b b b b b b b b b b b b . 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-        b b b b b b b d d b b b b b b b 
-        . b b b b b b c c b b b b b b . 
-        b c c c c c b c c b c c c c c b 
-        b c c c c c c b b c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b b b b b b b b b b b b b b b b 
-        b e e e e e e e e e e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b c e e e e e e e e e e e e c b 
-        b b b b b b b b b b b b b b b b 
-        . b b . . . . . . . . . . b b . 
-        `)
     if (Math.percentChance(100)) {
         keys = sprites.create(img`
             . . . . . 5 . . . . . . . . . . 
@@ -126,8 +108,6 @@ function Items (Chest: Sprite) {
             . . . . . . . 5 5 5 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.powerup)
-        keys.x = Chest.x
-        keys.y = Chest.y
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
@@ -140,7 +120,27 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
+    otherSprite.setImage(img`
+        . b b b b b b b b b b b b b b . 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+        b b b b b b b d d b b b b b b b 
+        . b b b b b b c c b b b b b b . 
+        b c c c c c b c c b c c c c c b 
+        b c c c c c c b b c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b b b b b b b b b b b b b b b b 
+        b e e e e e e e e e e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b c e e e e e e e e e e e e c b 
+        b b b b b b b b b b b b b b b b 
+        . b b . . . . . . . . . . b b . 
+        `)
     Items(Chest)
+    keys.x = otherSprite.x
+    keys.y = otherSprite.y
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -220,27 +220,27 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         b b b b b b b b b b b b b b b b 
         . b b . . . . . . . . . . b b . 
         `)
-    if (Math.percentChance(100)) {
-        pickax = sprites.create(img`
-            . . . . . . . . . 5 . . . . . . 
-            . . . . 5 . . . . 5 . . . 5 . . 
-            . . . . 5 5 . . . 5 . 5 5 5 . . 
-            5 5 . . . . . . . . . 5 . . . . 
-            . 5 5 . . f f f . . . . . . . . 
-            . . 5 . . . f f f f . . 5 5 . 5 
-            . . . . . . . . e f . . . . 5 5 
-            . . . . . . . e . f f . . . . . 
-            . . . . . . e . . f f . . . . . 
-            . . . . . e . . . . f . . . . . 
-            . . . . e . . . . . . . 5 . . . 
-            . . . e . . . . . . . . 5 5 . . 
-            . . e . . . . . 5 5 . . . 5 5 . 
-            . . . . . . . . . 5 . . . . . . 
-            . . . . . . . . . 5 . . . . . . 
-            . . . . . . . . . 5 . . . . . . 
-            `, SpriteKind.powerup)
-        keys.x = Chest.x
-        keys.y = Chest.y
+    pickax = sprites.create(img`
+        . . . . . . . . . 5 . . . . . . 
+        . . . . 5 . . . . 5 . . . 5 . . 
+        . . . . 5 5 . . . 5 . 5 5 5 . . 
+        5 5 . . . . . . . . . 5 . . . . 
+        . 5 5 . . f f f . . . . . . . . 
+        . . 5 . . . f f f f . . 5 5 . 5 
+        . . . . . . . . e f . . . . 5 5 
+        . . . . . . . e . f f . . . . . 
+        . . . . . . e . . f f . . . . . 
+        . . . . . e . . . . f . . . . . 
+        . . . . e . . . . . . . 5 . . . 
+        . . . e . . . . . . . . 5 5 . . 
+        . . e . . . . . 5 5 . . . 5 5 . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        `, SpriteKind.powerup)
+    pickax.x = Chest.x
+    pickax.y = Chest.y
+    while (!(controller.A.isPressed())) {
         game.showLongText("You found a pickax! (Can break cracked brick tiles)", DialogLayout.Bottom)
     }
 })
