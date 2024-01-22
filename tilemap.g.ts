@@ -73,15 +73,6 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16], TileScale.Sixteen);
-            case "level5":
-            case "level5":return tiles.createTilemap(hex`050006000c0b020b09040d0d0d03040d0d0d03040d0d0d03060d0d0d05070a010a08`, img`
-2 2 . 2 2 
-2 . . . 2 
-2 . . . 2 
-2 . . . 2 
-2 . . . 2 
-2 2 . 2 2 
-`, [myTiles.transparency16,myTiles.tile2,myTiles.tile4,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterEast1,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouth2,sprites.dungeon.greenOuterNorth2,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.floorLight0], TileScale.Sixteen);
             case "level3":
             case "level3":return tiles.createTilemap(hex`100010000202020202020202040202020202020202010101010101010102010101010102020101010101010202020101010101020201070701010102010101010101010202010707010101020101060b0601010202010707010101050101090c0a01010202010707010101050101060806010102020107070101010501010101010101020201010101010102010101010101010202020102020202020202020201020202020101010201010101010101010101020201010102010101010101010101010202010101020101010101010101010102020101010201010101010101010101020201010102010101010101010101010202020202020202020302020202020202`, img`
 2 2 2 2 2 2 2 2 . 2 2 2 2 2 2 2 
@@ -196,6 +187,15 @@ namespace myTiles {
 2 . 2 . . . . . 2 2 2 2 2 . . 2 
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 `, [myTiles.transparency16,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterWest1,sprites.dungeon.purpleOuterNorth1,sprites.dungeon.darkGroundNorthWest0,sprites.dungeon.darkGroundNorthEast0,sprites.dungeon.darkGroundSouthEast0,sprites.dungeon.darkGroundSouth,sprites.dungeon.darkGroundNorth,sprites.dungeon.darkGroundEast,sprites.dungeon.darkGroundWest,sprites.dungeon.darkGroundCenter,sprites.dungeon.purpleOuterNorth2,sprites.dungeon.purpleOuterWest2,sprites.dungeon.purpleOuterSouth2,sprites.dungeon.purpleOuterEast2,myTiles.tile1,sprites.dungeon.purpleInnerNorthEast,sprites.dungeon.purpleInnerNorthWest,sprites.dungeon.purpleOuterWest0,sprites.dungeon.floorDark3,sprites.dungeon.darkGroundNorthEast1,sprites.dungeon.chestClosed], TileScale.Sixteen);
+            case "level5":
+            case "level5":return tiles.createTilemap(hex`050006000c0b020b09040d0d0d03040d0d0d03040d0d0d03060d0d0d05070a010a08`, img`
+2 2 . 2 2 
+2 . . . 2 
+2 . . . 2 
+2 . . . 2 
+2 . . . 2 
+2 2 . 2 2 
+`, [myTiles.transparency16,myTiles.tile2,myTiles.tile4,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.greenOuterEast1,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterSouthEast,sprites.dungeon.greenOuterSouthWest,sprites.dungeon.greenOuterNorthEast,sprites.dungeon.greenOuterSouth2,sprites.dungeon.greenOuterNorth2,sprites.dungeon.greenOuterNorthWest,sprites.dungeon.floorLight0], TileScale.Sixteen);
         }
         return null;
     })

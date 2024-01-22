@@ -112,28 +112,6 @@
         ],
         "displayName": "level4"
     },
-    "level5": {
-        "id": "level5",
-        "mimeType": "application/mkcd-tilemap",
-        "data": "MTAwNTAwMDYwMDBjMGIwMjBiMDkwNDBkMGQwZDAzMDQwZDBkMGQwMzA0MGQwZDBkMDMwNjBkMGQwZDA1MDcwYTAxMGEwODIyMjAyMjAwMjAwMjAwMjIwMDIwMDIwMDIyMDIyMg==",
-        "tileset": [
-            "myTiles.transparency16",
-            "myTiles.tile2",
-            "myTiles.tile4",
-            "sprites.dungeon.greenOuterEast0",
-            "sprites.dungeon.greenOuterWest1",
-            "sprites.dungeon.greenOuterEast1",
-            "sprites.dungeon.greenOuterWest0",
-            "sprites.dungeon.greenOuterSouthEast",
-            "sprites.dungeon.greenOuterSouthWest",
-            "sprites.dungeon.greenOuterNorthEast",
-            "sprites.dungeon.greenOuterSouth2",
-            "sprites.dungeon.greenOuterNorth2",
-            "sprites.dungeon.greenOuterNorthWest",
-            "sprites.dungeon.floorLight0"
-        ],
-        "displayName": "level5"
-    },
     "level3": {
         "id": "level3",
         "mimeType": "application/mkcd-tilemap",
@@ -226,6 +204,28 @@
             "sprites.dungeon.chestClosed"
         ],
         "displayName": "level1"
+    },
+    "level5": {
+        "id": "level5",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAwNTAwMDYwMDBjMGIwMjBiMDkwNDBkMGQwZDAzMDQwZDBkMGQwMzA0MGQwZDBkMDMwNjBkMGQwZDA1MDcwYTAxMGEwODIyMjAyMjAwMjAwMjAwMjIwMDIwMDIwMDIyMDIyMg==",
+        "tileset": [
+            "myTiles.transparency16",
+            "myTiles.tile2",
+            "myTiles.tile4",
+            "sprites.dungeon.greenOuterEast0",
+            "sprites.dungeon.greenOuterWest1",
+            "sprites.dungeon.greenOuterEast1",
+            "sprites.dungeon.greenOuterWest0",
+            "sprites.dungeon.greenOuterSouthEast",
+            "sprites.dungeon.greenOuterSouthWest",
+            "sprites.dungeon.greenOuterNorthEast",
+            "sprites.dungeon.greenOuterSouth2",
+            "sprites.dungeon.greenOuterNorth2",
+            "sprites.dungeon.greenOuterNorthWest",
+            "sprites.dungeon.floorLight0"
+        ],
+        "displayName": "level5"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
