@@ -24,7 +24,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
             b c e e e e e e e e e e e e c b 
             b b b b b b b b b b b b b b b b 
             . b b . . . . . . . . . . b b . 
-            `, SpriteKind.chest_)
+            `, SpriteKind.Food)
         Chest.setPosition(value.x, value.y)
         chestlist.push(Chest)
     }
@@ -89,58 +89,33 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function Items (Chest: Sprite) {
-    if (Math.percentChance(100)) {
-        keys = sprites.create(img`
-            . . . . . 5 . . . . . . . . . . 
-            . 5 5 . . . 5 . . . . 5 5 . . . 
-            . . 5 5 . . 5 5 . . 5 5 . . . . 
-            . . . 5 . . . . . . . . . . . . 
-            . . . . . 5 5 5 5 5 . . . . . . 
-            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-            5 5 5 . . 5 5 . 5 5 . . . . . . 
-            . . . . . 5 . 5 . 5 . . . . . . 
-            . . . . . 5 5 5 5 5 . 5 . . . . 
-            . . 5 5 . . . . 5 5 . 5 5 . . . 
-            . 5 5 . . . . . 5 5 . . 5 5 . . 
-            . 5 . . . . . . 5 5 . . . 5 . . 
-            . . . . . . . 5 5 5 . . . 5 . . 
-            . . . . . . . . 5 5 . . . . . . 
-            . . . . . . . 5 5 5 . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.powerup)
-    }
+    keys = sprites.create(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.powerup)
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-    sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Food)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
-    otherSprite.setImage(img`
-        . b b b b b b b b b b b b b b . 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-        b b b b b b b d d b b b b b b b 
-        . b b b b b b c c b b b b b b . 
-        b c c c c c b c c b c c c c c b 
-        b c c c c c c b b c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b c c c c c c c c c c c c c c b 
-        b b b b b b b b b b b b b b b b 
-        b e e e e e e e e e e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b c e e e e e e e e e e e e c b 
-        b b b b b b b b b b b b b b b b 
-        . b b . . . . . . . . . . b b . 
-        `)
-    Items(Chest)
-    keys.x = otherSprite.x
-    keys.y = otherSprite.y
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -366,14 +341,37 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.powerup, function (sprite, otherSprite) {
-    sprites.destroy(otherSprite)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    otherSprite.setImage(img`
+        . b b b b b b b b b b b b b b . 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+        b b b b b b b d d b b b b b b b 
+        . b b b b b b c c b b b b b b . 
+        b c c c c c b c c b c c c c c b 
+        b c c c c c c b b c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b b b b b b b b b b b b b b b b 
+        b e e e e e e e e e e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b c e e e e e e e e e e e e c b 
+        b b b b b b b b b b b b b b b b 
+        . b b . . . . . . . . . . b b . 
+        `)
+    Items(Chest)
+    keys.x = otherSprite.x
+    keys.y = otherSprite.y
+})
+sprites.onOverlap(SpriteKind.powerup, SpriteKind.Player, function (sprite, otherSprite) {
+    sprites.destroy(sprite)
 })
 let pickax: Sprite = null
 let keys: Sprite = null
+let player1: Sprite = null
 let Chest: Sprite = null
 let chestlist: Sprite[] = []
-let player1: Sprite = null
 let mySprite = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (mySprite == "E") {
     info.startCountdown(600)
@@ -381,6 +379,30 @@ if (mySprite == "E") {
     info.startCountdown(480)
 } else {
     info.startCountdown(300)
+}
+tiles.setCurrentTilemap(tilemap`level1`)
+chestlist = []
+for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
+    Chest = sprites.create(img`
+        . . b b b b b b b b b b b b . . 
+        . b e 4 4 4 4 4 4 4 4 4 4 e b . 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+        b e e e e e e e e e e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b b b b b b b d d b b b b b b b 
+        c b b b b b b c c b b b b b b c 
+        c c c c c c b c c b c c c c c c 
+        b e e e e e c b b c e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b c e e e e e e e e e e e e c b 
+        b b b b b b b b b b b b b b b b 
+        . b b . . . . . . . . . . b b . 
+        `, SpriteKind.Food)
+    Chest.setPosition(value.x, value.y)
+    chestlist.push(Chest)
 }
 player1 = sprites.create(img`
     . f f f . f f f f . f f f . 
@@ -403,27 +425,3 @@ player1 = sprites.create(img`
 player1.setPosition(120, 27)
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
-tiles.setCurrentTilemap(tilemap`level1`)
-chestlist = []
-for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
-    Chest = sprites.create(img`
-        . . b b b b b b b b b b b b . . 
-        . b e 4 4 4 4 4 4 4 4 4 4 e b . 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-        b e e e e e e e e e e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b b b b b b b d d b b b b b b b 
-        c b b b b b b c c b b b b b b c 
-        c c c c c c b c c b c c c c c c 
-        b e e e e e c b b c e e e e e b 
-        b e e e e e e e e e e e e e e b 
-        b c e e e e e e e e e e e e c b 
-        b b b b b b b b b b b b b b b b 
-        . b b . . . . . . . . . . b b . 
-        `, SpriteKind.chest_)
-    Chest.setPosition(value.x, value.y)
-    chestlist.push(Chest)
-}
