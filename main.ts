@@ -96,24 +96,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
-    keys = sprites.create(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.powerup)
+    if (list.length == 4) {
+        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
+    }
     otherSprite.setImage(img`
         . b b b b b b b b b b b b b b . 
         b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -340,12 +325,31 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
 let pickax: Sprite = null
-let keys: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
+let list: Image[] = []
+let inventory_1: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
-let list = [
-sprites.create(img`
+inventory_1 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
+list = [
+img`
     . . . . . 5 . . . . . . . . . . 
     . 5 5 . . . 5 . . . . 5 5 . . . 
     . . 5 5 . . 5 5 . . 5 5 . . . . 
@@ -362,8 +366,8 @@ sprites.create(img`
     . . . . . . . . 5 5 . . . . . . 
     . . . . . . . 5 5 5 . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.powerup),
-sprites.create(img`
+    `,
+img`
     . . . . . 3 . . . . . . . . . . 
     . 3 3 . . . 3 . . . . 3 3 . . . 
     . . 3 3 . . 3 3 . . 3 3 . . . . 
@@ -380,8 +384,8 @@ sprites.create(img`
     . . . . . . . . 3 3 . . . . . . 
     . . . . . . . 3 3 3 . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.powerup),
-sprites.create(img`
+    `,
+img`
     . . . . . 6 . . . . . . . . . . 
     . 6 6 . . . 6 . . . . 6 6 . . . 
     . . 6 6 . . 6 6 . . 6 6 . . . . 
@@ -398,8 +402,8 @@ sprites.create(img`
     . . . . . . . . 6 6 . . . . . . 
     . . . . . . . 6 6 6 . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.powerup),
-sprites.create(img`
+    `,
+img`
     . . . . . b . . . . . . . . . . 
     . b b . . . b . . . . b b . . . 
     . . b b . . b b . . b b . . . . 
@@ -416,7 +420,7 @@ sprites.create(img`
     . . . . . . . . b b . . . . . . 
     . . . . . . . b b b . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.powerup)
+    `
 ]
 let mySprite = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (mySprite == "E") {
@@ -468,3 +472,8 @@ player1 = sprites.create(img`
 player1.setPosition(120, 27)
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
+game.onUpdate(function () {
+    inventory_1.x = scene.cameraProperty(CameraProperty.X) - 70
+    inventory_1.y = scene.cameraProperty(CameraProperty.Y) - 50
+    inventory_1.z = 0
+})
