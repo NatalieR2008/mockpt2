@@ -109,19 +109,19 @@ function Items (Chest: Sprite) {
         `)
     if (Math.percentChance(100)) {
         keys = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . . . 5 . . . . . . . . . . 
+            . 5 5 . . . 5 . . . . 5 5 . . . 
+            . . 5 5 . . 5 5 . . 5 5 . . . . 
+            . . . 5 . . . . . . . . . . . . 
             . . . . . 5 5 5 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+            5 5 5 . . 5 5 . 5 5 . . . . . . 
             . . . . . 5 . 5 . 5 . . . . . . 
-            . . . . . 5 5 . 5 5 . . . . . . 
-            . . . . . 5 . 5 . 5 . . . . . . 
-            . . . . . 5 5 5 5 5 . . . . . . 
-            . . . . . . . . 5 5 . . . . . . 
-            . . . . . . . . 5 5 . . . . . . 
-            . . . . . . . . 5 5 . . . . . . 
-            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . 5 5 5 5 5 . 5 . . . . 
+            . . 5 5 . . . . 5 5 . 5 5 . . . 
+            . 5 5 . . . . . 5 5 . . 5 5 . . 
+            . 5 . . . . . . 5 5 . . . 5 . . 
+            . . . . . . . 5 5 5 . . . 5 . . 
             . . . . . . . . 5 5 . . . . . . 
             . . . . . . . 5 5 5 . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -200,6 +200,49 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    Chest.setImage(img`
+        . b b b b b b b b b b b b b b . 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+        b b b b b b b d d b b b b b b b 
+        . b b b b b b c c b b b b b b . 
+        b c c c c c b c c b c c c c c b 
+        b c c c c c c b b c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b c c c c c c c c c c c c c c b 
+        b b b b b b b b b b b b b b b b 
+        b e e e e e e e e e e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b c e e e e e e e e e e e e c b 
+        b b b b b b b b b b b b b b b b 
+        . b b . . . . . . . . . . b b . 
+        `)
+    if (Math.percentChance(100)) {
+        pickax = sprites.create(img`
+            . . . . . . . . . 5 . . . . . . 
+            . . . . 5 . . . . 5 . . . 5 . . 
+            . . . . 5 5 . . . 5 . 5 5 5 . . 
+            5 5 . . . . . . . . . 5 . . . . 
+            . 5 5 . . f f f . . . . . . . . 
+            . . 5 . . . f f f f . . 5 5 . 5 
+            . . . . . . . . e f . . . . 5 5 
+            . . . . . . . e . f f . . . . . 
+            . . . . . . e . . f f . . . . . 
+            . . . . . e . . . . f . . . . . 
+            . . . . e . . . . . . . 5 . . . 
+            . . . e . . . . . . . . 5 5 . . 
+            . . e . . . . . 5 5 . . . 5 5 . 
+            . . . . . . . . . 5 . . . . . . 
+            . . . . . . . . . 5 . . . . . . 
+            . . . . . . . . . 5 . . . . . . 
+            `, SpriteKind.powerup)
+        keys.x = Chest.x
+        keys.y = Chest.y
+        game.showLongText("You found a pickax! (Can break cracked brick tiles)", DialogLayout.Bottom)
+    }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -324,8 +367,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.powerup, function (sprite, otherSprite) {
-	
+    sprites.destroy(otherSprite)
 })
+let pickax: Sprite = null
 let keys: Sprite = null
 let Chest: Sprite = null
 let chestlist: Sprite[] = []
