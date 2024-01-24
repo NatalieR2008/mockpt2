@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const powerup = SpriteKind.create()
     export const chest_ = SpriteKind.create()
+    export const open_chest = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
@@ -90,7 +91,19 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
 	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    if (inventory_1.image == list[0]) {
+    if (inventory_1.image.equals(list[0])) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    } else if (inventory_2.image.equals(list[0])) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    } else if (inventory_3.image.equals(list[0])) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    } else if (inventory_4.image.equals(list[0])) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
@@ -121,6 +134,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherS
         b b b b b b b b b b b b b b b b 
         . b b . . . . . . . . . . b b . 
         `)
+    otherSprite.setKind(SpriteKind.open_chest)
     items(list)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
