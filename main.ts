@@ -103,15 +103,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
-    if (list.length == 4) {
-        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else if (list.length == 3) {
-        inventory_2.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else if (list.length == 2) {
-        inventory_3.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else {
-        inventory_4.setImage(list.removeAt(randint(0, list.length - 1)))
-    }
     otherSprite.setImage(img`
         . b b b b b b b b b b b b b b . 
         b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -130,6 +121,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherS
         b b b b b b b b b b b b b b b b 
         . b b . . . . . . . . . . b b . 
         `)
+    items(list)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -190,6 +182,17 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function items (list: Image[]) {
+    if (list.length == 4) {
+        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else if (list.length == 3) {
+        inventory_2.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else if (list.length == 2) {
+        inventory_3.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else {
+        inventory_4.setImage(list.removeAt(randint(0, list.length - 1)))
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     pickaxe = sprites.create(img`
         . . . . . . . . . 5 . . . . . . 
