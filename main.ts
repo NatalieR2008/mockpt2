@@ -8,23 +8,23 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     player1.setPosition(120, 27)
     for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
         Chest = sprites.create(img`
-            . . b b b b b b b b b b b b . . 
-            . b e 4 4 4 4 4 4 4 4 4 4 e b . 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+            . b b b b b b b b b b b b b b . 
+            b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
             b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
             b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-            b e e e e e e e e e e e e e e b 
-            b e e e e e e e e e e e e e e b 
             b b b b b b b d d b b b b b b b 
-            c b b b b b b c c b b b b b b c 
-            c c c c c c b c c b c c c c c c 
-            b e e e e e c b b c e e e e e b 
+            . b b b b b b c c b b b b b b . 
+            b c c c c c b c c b c c c c c b 
+            b c c c c c c b b c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b c c c c c c c c c c c c c c b 
+            b b b b b b b b b b b b b b b b 
+            b e e e e e e e e e e e e e e b 
             b e e e e e e e e e e e e e e b 
             b c e e e e e e e e e e e e c b 
             b b b b b b b b b b b b b b b b 
             . b b . . . . . . . . . . b b . 
-            `, SpriteKind.chest_)
+            `, SpriteKind.open_chest)
         Chest.setPosition(value.x, value.y)
     }
 })
@@ -109,8 +109,11 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
             tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
+        } else if (player1.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorDark3)) {
             tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight3)) {
+            tiles.setTileAt(location, assets.tile`myTile3`)
             tiles.setWallAt(location, false)
         }
     }
@@ -603,6 +606,24 @@ img`
     . . . . . . . . b b . . . . . . 
     . . . . . . . b b b . . . . . . 
     . . . . . . . . . . . . . . . . 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . d d d . 
+    . . . . . . . . . . . d d 7 d . 
+    . . . . . . . . . . d d 7 d d . 
+    . . . . . . . . . d d 7 d d . . 
+    . . . . . . . . d d 7 d d . . . 
+    . . . . . . . d d 7 d d . . . . 
+    . . e . . . d d 7 d d . . . . . 
+    . e 7 e . d d 7 d d . . . . . . 
+    . . e e e e e d d . . . . . . . 
+    . . . e 7 7 e d . . . . . . . . 
+    . . e e 7 7 e . . . . . . . . . 
+    . e e e e e e e . . . . . . . . 
+    e e e e e . e 7 e . . . . . . . 
+    e 7 e e . . . e . . . . . . . . 
+    e e e . . . . . . . . . . . . . 
     `
 ]
 let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
@@ -652,7 +673,7 @@ player1 = sprites.create(img`
     . . . . f f f f f f . . . . 
     . . . . f f . . f f . . . . 
     `, SpriteKind.Player)
-player1.setPosition(120, 27)
+tiles.placeOnTile(player1, tiles.getTileLocation(7, 8))
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
 pickaxe = sprites.create(img`
