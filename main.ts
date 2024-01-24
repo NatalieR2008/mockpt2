@@ -474,36 +474,12 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    for (let value of inventory) {
-        if (inventory[value].image.equals(img`
-            . . . . . 6 . . . . . . . . . . 
-            . 6 6 . . . 6 . . . . 6 6 . . . 
-            . . 6 6 . . 6 6 . . 6 6 . . . . 
-            . . . 6 . . . . . . . . . . . . 
-            . . . . . 6 6 6 6 6 . . . . . . 
-            . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-            6 6 6 . . 6 6 . 6 6 . . . . . . 
-            . . . . . 6 . 6 . 6 . . . . . . 
-            . . . . . 6 6 6 6 6 . 6 . . . . 
-            . . 6 6 . . . . 6 6 . 6 6 . . . 
-            . 6 6 . . . . . 6 6 . . 6 6 . . 
-            . 6 . . . . . . 6 6 . . . 6 . . 
-            . . . . . . . 6 6 6 . . . 6 . . 
-            . . . . . . . . 6 6 . . . . . . 
-            . . . . . . . 6 6 6 . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)) {
-            tiles.setCurrentTilemap(tilemap`level3`)
-            tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        } else {
-            game.showLongText("You don't have the closet key yet!", DialogLayout.Bottom)
-        }
-    }
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
 let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
-let inventory: Sprite[] = []
 let list: Image[] = []
 let inventory_5: Sprite = null
 let inventory_4: Sprite = null
@@ -692,13 +668,6 @@ img`
     e 7 e e . . . e e . . . . . . . 
     e e e . . . . . . . . . . . . . 
     `
-]
-inventory = [
-inventory_1,
-inventory_2,
-inventory_3,
-inventory_4,
-inventory_5
 ]
 let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (Difficulty == "E") {
