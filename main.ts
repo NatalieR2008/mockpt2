@@ -87,8 +87,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
-    tiles.setWallAt(location, false)
+	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     if (inventory_1.image == list[0]) {
@@ -104,7 +103,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
-    inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
+    if (list.length == 4) {
+        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else if (list.length == 3) {
+        inventory_2.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else if (list.length == 2) {
+        inventory_3.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else {
+        inventory_4.setImage(list.removeAt(randint(0, list.length - 1)))
+    }
     otherSprite.setImage(img`
         . b b b b b b b b b b b b b b . 
         b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
@@ -333,6 +340,9 @@ let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
 let list: Image[] = []
+let inventory_4: Sprite = null
+let inventory_3: Sprite = null
+let inventory_2: Sprite = null
 let inventory_1: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 inventory_1 = sprites.create(img`
@@ -353,7 +363,7 @@ inventory_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
-let inventory_2 = sprites.create(img`
+inventory_2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -371,7 +381,7 @@ let inventory_2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
-let inventory_3 = sprites.create(img`
+inventory_3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -389,7 +399,7 @@ let inventory_3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
-let inventory_4 = sprites.create(img`
+inventory_4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -550,9 +560,9 @@ pickaxe = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
 game.onUpdate(function () {
-    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
+    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - -50, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_1.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_4.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 50, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 30, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_4.setPosition(scene.cameraProperty(CameraProperty.X) - -30, scene.cameraProperty(CameraProperty.Y) - 50)
 })
