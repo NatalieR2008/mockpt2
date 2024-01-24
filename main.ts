@@ -207,6 +207,28 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+    } else if (inventory_5.image.equals(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
@@ -297,14 +319,16 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function items (list: Image[]) {
-    if (list.length == 4) {
+    if (list.length == 5) {
         inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else if (list.length == 3) {
+    } else if (list.length == 4) {
         inventory_2.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else if (list.length == 2) {
+    } else if (list.length == 3) {
         inventory_3.setImage(list.removeAt(randint(0, list.length - 1)))
-    } else {
+    } else if (list.length == 2) {
         inventory_4.setImage(list.removeAt(randint(0, list.length - 1)))
+    } else {
+        inventory_5.setImage(list.removeAt(randint(0, list.length - 1)))
     }
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
@@ -457,6 +481,7 @@ let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
 let list: Image[] = []
+let inventory_5: Sprite = null
 let inventory_4: Sprite = null
 let inventory_3: Sprite = null
 let inventory_2: Sprite = null
@@ -517,6 +542,24 @@ inventory_3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
 inventory_4 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
+inventory_5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -606,6 +649,24 @@ img`
     . . . . . . . . b b . . . . . . 
     . . . . . . . b b b . . . . . . 
     . . . . . . . . . . . . . . . . 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . d d d . 
+    . . . . . . . . . . . d d 7 d . 
+    . . . . . . . . . . d d 7 d d . 
+    . . . . . . . . . d d 7 d d . . 
+    . . . . . . . . d d 7 d d . . . 
+    . . . . . . . d d 7 d d . . . . 
+    . e e . . . d d 7 d d . . . . . 
+    . e 7 e . d d 7 d d . . . . . . 
+    . . e e e e e d d . . . . . . . 
+    . . . e 7 7 e d . . . . . . . . 
+    . . e e 7 7 e . . . . . . . . . 
+    . e e e e e e e . . . . . . . . 
+    e e e e e . e 7 e . . . . . . . 
+    e 7 e e . . . e e . . . . . . . 
+    e e e . . . . . . . . . . . . . 
     `
 ]
 let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
@@ -677,9 +738,10 @@ pickaxe = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
 game.onUpdate(function () {
-    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - -50, scene.cameraProperty(CameraProperty.Y) - 50)
+    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - -45, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_1.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 50, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 30, scene.cameraProperty(CameraProperty.Y) - 50)
-    inventory_4.setPosition(scene.cameraProperty(CameraProperty.X) - -30, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 55, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 40, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_4.setPosition(scene.cameraProperty(CameraProperty.X) - 25, scene.cameraProperty(CameraProperty.Y) - 50)
+    inventory_5.setPosition(scene.cameraProperty(CameraProperty.X) - -30, scene.cameraProperty(CameraProperty.Y) - 50)
 })
