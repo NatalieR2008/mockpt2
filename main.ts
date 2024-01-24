@@ -86,10 +86,18 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
+    tiles.setWallAt(location, false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level5`)
-    tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-    sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    if (inventory_1.image == list[0]) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+    } else {
+        game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
@@ -195,7 +203,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         . . . . . . . . . 5 . . . . . . 
         `, SpriteKind.powerup)
     tiles.setTileAt(location, sprites.dungeon.chestOpen)
-    tiles.placeOnTile(pickaxe, tiles.getTileLocation(13, 11))
     while (!(controller.A.isPressed())) {
         game.showLongText("You found a pickaxe! (Can break cracked brick tiles)", DialogLayout.Bottom)
     }
@@ -524,7 +531,26 @@ player1 = sprites.create(img`
 player1.setPosition(120, 27)
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
+pickaxe = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.powerup)
 game.onUpdate(function () {
+    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_1.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
