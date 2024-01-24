@@ -355,6 +355,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         game.showLongText("You found a pickaxe! (Can break cracked brick tiles)", DialogLayout.Bottom)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level24`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     player1,
@@ -413,6 +417,10 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level24`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
