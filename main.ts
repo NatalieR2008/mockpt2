@@ -88,25 +88,122 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-	
+    if (pickaxe.image.equals(img`
+        . . . . . . . . . 5 . . . . . . 
+        . . . . 5 . . . . 5 . . . 5 . . 
+        . . . . 5 5 . . . 5 . 5 5 5 . . 
+        5 5 . . . . . . . . . 5 . . . . 
+        . 5 5 . . f f f . . . . . . . . 
+        . . 5 . . . f f f f . . 5 5 . 5 
+        . . . . . . . . e f . . . . 5 5 
+        . . . . . . . e . f f . . . . . 
+        . . . . . . e . . f f . . . . . 
+        . . . . . e . . . . f . . . . . 
+        . . . . e . . . . . . . 5 . . . 
+        . . . e . . . . . . . . 5 5 . . 
+        . . e . . . . . 5 5 . . . 5 5 . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        `)) {
+        if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
+            tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
+            tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
+            tiles.setWallAt(location, false)
+        }
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    if (inventory_1.image.equals(list[0])) {
+    if (inventory_1.image.equals(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_2.image.equals(list[0])) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+    } else if (inventory_2.image.equals(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_3.image.equals(list[0])) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+    } else if (inventory_3.image.equals(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_4.image.equals(list[0])) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+    } else if (inventory_4.image.equals(img`
+        . . . . . 5 . . . . . . . . . . 
+        . 5 5 . . . 5 . . . . 5 5 . . . 
+        . . 5 5 . . 5 5 . . 5 5 . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . . 5 5 5 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+        5 5 5 . . 5 5 . 5 5 . . . . . . 
+        . . . . . 5 . 5 . 5 . . . . . . 
+        . . . . . 5 5 5 5 5 . 5 . . . . 
+        . . 5 5 . . . . 5 5 . 5 5 . . . 
+        . 5 5 . . . . . 5 5 . . 5 5 . . 
+        . 5 . . . . . . 5 5 . . . 5 . . 
+        . . . . . . . 5 5 5 . . . 5 . . 
+        . . . . . . . . 5 5 . . . . . . 
+        . . . . . . . 5 5 5 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
         sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
