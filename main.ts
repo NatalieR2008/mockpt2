@@ -139,24 +139,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        Chest.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else if (inventory_2.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -177,24 +161,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        Chest.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else if (inventory_3.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -215,24 +183,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        Chest.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else if (inventory_4.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -253,24 +205,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        Chest.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else if (inventory_5.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -291,24 +227,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        Chest.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
@@ -336,8 +256,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherS
         b b b b b b b b b b b b b b b b 
         . b b . . . . . . . . . . b b . 
         `)
+    otherSprite.setKind(SpriteKind.open_chest)
     items(list)
-    Chest = SpriteKind.open_chest
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -590,7 +510,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
 })
 let pickaxe: Sprite = null
 let player1: Sprite = null
-let Chest = 0
+let Chest: Sprite = null
 let inventory: Sprite[] = []
 let list: Image[] = []
 let inventory_5: Sprite = null
