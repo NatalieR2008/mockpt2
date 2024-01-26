@@ -803,9 +803,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
             sprites.destroy(otherSprite)
         } else {
             statusbarplayer1.value += -1
+            pause(100)
         }
     } else {
         statusbarplayer1.value += -1
+        pause(100)
     }
 })
 let havesword = ""
