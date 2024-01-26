@@ -7,26 +7,66 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     tiles.setCurrentTilemap(tilemap`level1`)
     player1.setPosition(120, 27)
     for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
-        Chest = sprites.create(img`
-            . b b b b b b b b b b b b b b . 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
-            b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-            b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-            b b b b b b b d d b b b b b b b 
-            . b b b b b b c c b b b b b b . 
-            b c c c c c b c c b c c c c c b 
-            b c c c c c c b b c c c c c c b 
-            b c c c c c c c c c c c c c c b 
-            b c c c c c c c c c c c c c c b 
-            b b b b b b b b b b b b b b b b 
-            b e e e e e e e e e e e e e e b 
-            b e e e e e e e e e e e e e e b 
-            b c e e e e e e e e e e e e c b 
-            b b b b b b b b b b b b b b b b 
-            . b b . . . . . . . . . . b b . 
-            `, SpriteKind.open_chest)
-        Chest.setPosition(value.x, value.y)
+        if (Chest == sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.open_chest)) {
+            Chest.setImage(img`
+                . b b b b b b b b b b b b b b . 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+                b b b b b b b d d b b b b b b b 
+                . b b b b b b c c b b b b b b . 
+                b c c c c c b c c b c c c c c b 
+                b c c c c c c b b c c c c c c b 
+                b c c c c c c c c c c c c c c b 
+                b c c c c c c c c c c c c c c b 
+                b b b b b b b b b b b b b b b b 
+                b e e e e e e e e e e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b c e e e e e e e e e e e e c b 
+                b b b b b b b b b b b b b b b b 
+                . b b . . . . . . . . . . b b . 
+                `)
+            tiles.placeOnTile(Chest, chest_position.removeAt(randint(0, chest_position.length - 1)))
+        } else {
+            Chest = sprites.create(img`
+                . . b b b b b b b b b b b b . . 
+                . b e 4 4 4 4 4 4 4 4 4 4 e b . 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+                b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+                b e e e e e e e e e e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b b b b b b b d d b b b b b b b 
+                c b b b b b b c c b b b b b b c 
+                c c c c c c b c c b c c c c c c 
+                b e e e e e c b b c e e e e e b 
+                b e e e e e e e e e e e e e e b 
+                b c e e e e e e e e e e e e c b 
+                b b b b b b b b b b b b b b b b 
+                . b b . . . . . . . . . . b b . 
+                `, SpriteKind.chest_)
+            tiles.placeOnTile(Chest, chest_position.removeAt(randint(0, chest_position.length - 1)))
+        }
     }
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -134,6 +174,13 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    chest_position = [
+    tiles.getTileLocation(13, 2),
+    tiles.getTileLocation(3, 3),
+    tiles.getTileLocation(4, 6),
+    tiles.getTileLocation(11, 8),
+    tiles.getTileLocation(1, 14)
+    ]
     if (inventory_1.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -154,8 +201,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
     } else if (inventory_2.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -176,8 +223,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
     } else if (inventory_3.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -198,8 +245,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
     } else if (inventory_4.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -220,8 +267,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
     } else if (inventory_5.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -242,8 +289,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
@@ -346,6 +393,106 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
+    if (inventory_1.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_2.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_3.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_4.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_5.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else {
+        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    }
 })
 function items (list: Image[]) {
     if (list.length == 5) {
@@ -464,7 +611,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
         . . . . . . . . . . . . . . . . 
         `)) {
         tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
     } else if (inventory_5.image.equals(img`
         . . . . . b . . . . . . . . . . 
         . b b . . . b . . . . b b . . . 
@@ -547,6 +693,106 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
+    if (inventory_1.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_2.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_3.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_4.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else if (inventory_5.image.equals(img`
+        . . . . . 9 . . . . . . . . . . 
+        . 9 9 . . . 9 . . . . 9 9 . . . 
+        . . 9 9 . . 9 9 . . 9 9 . . . . 
+        . . . 9 . . . . . . . . . . . . 
+        . . . . . 9 9 9 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+        9 9 9 . . 9 9 . 9 9 . . . . . . 
+        . . . . . 9 . 9 . 9 . . . . . . 
+        . . . . . 9 9 9 9 9 . 9 . . . . 
+        . . 9 9 . . . . 9 9 . 9 9 . . . 
+        . 9 9 . . . . . 9 9 . . 9 9 . . 
+        . 9 . . . . . . 9 9 . . . 9 . . 
+        . . . . . . . 9 9 9 . . . 9 . . 
+        . . . . . . . . 9 9 . . . . . . 
+        . . . . . . . 9 9 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        game.setGameOverMessage(true, "Congratulations, You Escaped!")
+    } else {
+        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
     if (inventory_1.image.equals(img`
@@ -818,6 +1064,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     }
 })
 let Creatures: Sprite = null
+let chest_position: tiles.Location[] = []
 let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
