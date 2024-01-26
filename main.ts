@@ -146,609 +146,155 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         . . . . . . . . . 5 . . . . . . 
         . . . . . . . . . 5 . . . . . . 
         `)) {
-        if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
+        if (sprite.tileKindAt(TileDirection.Left, sprites.dungeon.floorDark3)) {
             tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorDark3)) {
+        } else if (sprite.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorDark3)) {
             tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight5)) {
+        } else if (sprite.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight5)) {
             tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Top, sprites.dungeon.floorLight5)) {
+        } else if (sprite.tileKindAt(TileDirection.Top, sprites.dungeon.floorLight5)) {
             tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Right, sprites.dungeon.floorLight5)) {
+        } else if (sprite.tileKindAt(TileDirection.Right, sprites.dungeon.floorLight5)) {
             tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorLight5)) {
+        } else if (sprite.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorLight5)) {
             tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Left, assets.tile`myTile9`)) {
+        } else if (sprite.tileKindAt(TileDirection.Left, assets.tile`myTile9`)) {
             tiles.setTileAt(location, assets.tile`myTile3`)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Right, assets.tile`myTile9`)) {
+        } else if (sprite.tileKindAt(TileDirection.Right, assets.tile`myTile9`)) {
             tiles.setTileAt(location, assets.tile`myTile3`)
             tiles.setWallAt(location, false)
         }
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (inventory_1.image.equals(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . d d d . 
-        . . . . . . . . . . . d d 7 d . 
-        . . . . . . . . . . d d 7 d d . 
-        . . . . . . . . . d d 7 d d . . 
-        . . . . . . . . d d 7 d d . . . 
-        . . . . . . . d d 7 d d . . . . 
-        . e e . . . d d 7 d d . . . . . 
-        . e 7 e . d d 7 d d . . . . . . 
-        . . e e e e e d d . . . . . . . 
-        . . . e 7 7 e d . . . . . . . . 
-        . . e e 7 7 e . . . . . . . . . 
-        . e e e e e e e . . . . . . . . 
-        e e e e e . e 7 e . . . . . . . 
-        e 7 e e . . . e e . . . . . . . 
-        e e e . . . . . . . . . . . . . 
-        `)) {
-        animation.runImageAnimation(
-        player1,
-        [img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . d d . 
-            . f f f f f f f f f f f f . d 7 d . 
-            . . f f f f f f f f f e . d 7 d . . 
-            . . e f f f f f f f f e e e d . . . 
-            . e 4 f f f f f f f f 4 7 e . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c f f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f c c c c c c f f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . e e . . . 
-            . . e f f f f f f f f e 7 e . . . . 
-            . . e f f f f f f f f 4 e e d . . . 
-            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
-            . . e f f f f f f e e 4 . . d 7 d . 
-            . . . f f f . . . . . . . . . d d . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f f c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f d . . . . 
-            . f f f f c c c c c c f f d . . . . 
-            . f f f f f f f f f f f f d . . . . 
-            . . f f f f f f f f f f 7 d . . . . 
-            . . e f f f f f f f f e e e . . . . 
-            . e 4 f f f f f f f f e 7 e . . . . 
-            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
-            . . 4 e e f f f f f f e . . . . . . 
-            . . . . . . . . f f f . . . . . . . 
-            `,img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . . . . . . 
-            . . e f f f f f f f f e . . . . . . 
-            . e 4 f f f f f f f f 4 e . . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `],
-        500,
-        false
-        )
-    } else if (inventory_2.image.equals(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . d d d . 
-        . . . . . . . . . . . d d 7 d . 
-        . . . . . . . . . . d d 7 d d . 
-        . . . . . . . . . d d 7 d d . . 
-        . . . . . . . . d d 7 d d . . . 
-        . . . . . . . d d 7 d d . . . . 
-        . e e . . . d d 7 d d . . . . . 
-        . e 7 e . d d 7 d d . . . . . . 
-        . . e e e e e d d . . . . . . . 
-        . . . e 7 7 e d . . . . . . . . 
-        . . e e 7 7 e . . . . . . . . . 
-        . e e e e e e e . . . . . . . . 
-        e e e e e . e 7 e . . . . . . . 
-        e 7 e e . . . e e . . . . . . . 
-        e e e . . . . . . . . . . . . . 
-        `)) {
-        animation.runImageAnimation(
-        player1,
-        [img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . d d . 
-            . f f f f f f f f f f f f . d 7 d . 
-            . . f f f f f f f f f e . d 7 d . . 
-            . . e f f f f f f f f e e e d . . . 
-            . e 4 f f f f f f f f 4 7 e . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c f f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f c c c c c c f f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . e e . . . 
-            . . e f f f f f f f f e 7 e . . . . 
-            . . e f f f f f f f f 4 e e d . . . 
-            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
-            . . e f f f f f f e e 4 . . d 7 d . 
-            . . . f f f . . . . . . . . . d d . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f f c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f d . . . . 
-            . f f f f c c c c c c f f d . . . . 
-            . f f f f f f f f f f f f d . . . . 
-            . . f f f f f f f f f f 7 d . . . . 
-            . . e f f f f f f f f e e e . . . . 
-            . e 4 f f f f f f f f e 7 e . . . . 
-            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
-            . . 4 e e f f f f f f e . . . . . . 
-            . . . . . . . . f f f . . . . . . . 
-            `,img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . . . . . . 
-            . . e f f f f f f f f e . . . . . . 
-            . e 4 f f f f f f f f 4 e . . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `],
-        500,
-        false
-        )
-    } else if (inventory_3.image.equals(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . d d d . 
-        . . . . . . . . . . . d d 7 d . 
-        . . . . . . . . . . d d 7 d d . 
-        . . . . . . . . . d d 7 d d . . 
-        . . . . . . . . d d 7 d d . . . 
-        . . . . . . . d d 7 d d . . . . 
-        . e e . . . d d 7 d d . . . . . 
-        . e 7 e . d d 7 d d . . . . . . 
-        . . e e e e e d d . . . . . . . 
-        . . . e 7 7 e d . . . . . . . . 
-        . . e e 7 7 e . . . . . . . . . 
-        . e e e e e e e . . . . . . . . 
-        e e e e e . e 7 e . . . . . . . 
-        e 7 e e . . . e e . . . . . . . 
-        e e e . . . . . . . . . . . . . 
-        `)) {
-        animation.runImageAnimation(
-        player1,
-        [img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . d d . 
-            . f f f f f f f f f f f f . d 7 d . 
-            . . f f f f f f f f f e . d 7 d . . 
-            . . e f f f f f f f f e e e d . . . 
-            . e 4 f f f f f f f f 4 7 e . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c f f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f c c c c c c f f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . e e . . . 
-            . . e f f f f f f f f e 7 e . . . . 
-            . . e f f f f f f f f 4 e e d . . . 
-            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
-            . . e f f f f f f e e 4 . . d 7 d . 
-            . . . f f f . . . . . . . . . d d . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f f c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f d . . . . 
-            . f f f f c c c c c c f f d . . . . 
-            . f f f f f f f f f f f f d . . . . 
-            . . f f f f f f f f f f 7 d . . . . 
-            . . e f f f f f f f f e e e . . . . 
-            . e 4 f f f f f f f f e 7 e . . . . 
-            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
-            . . 4 e e f f f f f f e . . . . . . 
-            . . . . . . . . f f f . . . . . . . 
-            `,img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . . . . . . 
-            . . e f f f f f f f f e . . . . . . 
-            . e 4 f f f f f f f f 4 e . . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `],
-        500,
-        false
-        )
-    } else if (inventory_4.image.equals(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . d d d . 
-        . . . . . . . . . . . d d 7 d . 
-        . . . . . . . . . . d d 7 d d . 
-        . . . . . . . . . d d 7 d d . . 
-        . . . . . . . . d d 7 d d . . . 
-        . . . . . . . d d 7 d d . . . . 
-        . e e . . . d d 7 d d . . . . . 
-        . e 7 e . d d 7 d d . . . . . . 
-        . . e e e e e d d . . . . . . . 
-        . . . e 7 7 e d . . . . . . . . 
-        . . e e 7 7 e . . . . . . . . . 
-        . e e e e e e e . . . . . . . . 
-        e e e e e . e 7 e . . . . . . . 
-        e 7 e e . . . e e . . . . . . . 
-        e e e . . . . . . . . . . . . . 
-        `)) {
-        animation.runImageAnimation(
-        player1,
-        [img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . d d . 
-            . f f f f f f f f f f f f . d 7 d . 
-            . . f f f f f f f f f e . d 7 d . . 
-            . . e f f f f f f f f e e e d . . . 
-            . e 4 f f f f f f f f 4 7 e . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c f f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f c c c c c c f f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . e e . . . 
-            . . e f f f f f f f f e 7 e . . . . 
-            . . e f f f f f f f f 4 e e d . . . 
-            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
-            . . e f f f f f f e e 4 . . d 7 d . 
-            . . . f f f . . . . . . . . . d d . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f f c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f d . . . . 
-            . f f f f c c c c c c f f d . . . . 
-            . f f f f f f f f f f f f d . . . . 
-            . . f f f f f f f f f f 7 d . . . . 
-            . . e f f f f f f f f e e e . . . . 
-            . e 4 f f f f f f f f e 7 e . . . . 
-            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
-            . . 4 e e f f f f f f e . . . . . . 
-            . . . . . . . . f f f . . . . . . . 
-            `,img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . . . . . . 
-            . . e f f f f f f f f e . . . . . . 
-            . e 4 f f f f f f f f 4 e . . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `],
-        500,
-        false
-        )
-    } else if (inventory_5.image.equals(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . d d d . 
-        . . . . . . . . . . . d d 7 d . 
-        . . . . . . . . . . d d 7 d d . 
-        . . . . . . . . . d d 7 d d . . 
-        . . . . . . . . d d 7 d d . . . 
-        . . . . . . . d d 7 d d . . . . 
-        . e e . . . d d 7 d d . . . . . 
-        . e 7 e . d d 7 d d . . . . . . 
-        . . e e e e e d d . . . . . . . 
-        . . . e 7 7 e d . . . . . . . . 
-        . . e e 7 7 e . . . . . . . . . 
-        . e e e e e e e . . . . . . . . 
-        e e e e e . e 7 e . . . . . . . 
-        e 7 e e . . . e e . . . . . . . 
-        e e e . . . . . . . . . . . . . 
-        `)) {
-        animation.runImageAnimation(
-        player1,
-        [img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . d d . 
-            . f f f f f f f f f f f f . d 7 d . 
-            . . f f f f f f f f f e . d 7 d . . 
-            . . e f f f f f f f f e e e d . . . 
-            . e 4 f f f f f f f f 4 7 e . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c f f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f c c c c c c f f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . e e . . . 
-            . . e f f f f f f f f e 7 e . . . . 
-            . . e f f f f f f f f 4 e e d . . . 
-            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
-            . . e f f f f f f e e 4 . . d 7 d . 
-            . . . f f f . . . . . . . . . d d . 
-            `,img`
-            . . . . . . . . . . . . . . . . . . 
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f f c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f d . . . . 
-            . f f f f c c c c c c f f d . . . . 
-            . f f f f f f f f f f f f d . . . . 
-            . . f f f f f f f f f f 7 d . . . . 
-            . . e f f f f f f f f e e e . . . . 
-            . e 4 f f f f f f f f e 7 e . . . . 
-            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
-            . . 4 e e f f f f f f e . . . . . . 
-            . . . . . . . . f f f . . . . . . . 
-            `,img`
-            . f f f . f f f f . f f f . . . . . 
-            f f f f f c c c c f f f f f . . . . 
-            f f f f b c c c c b f f f f . . . . 
-            f f f c 3 c c c c 3 c f f f . . . . 
-            . f 3 3 c c c c c c 3 3 f . . . . . 
-            . f c c c c c c c c c c f . . . . . 
-            . f f c c c c c c c c f f . . . . . 
-            . f f f c c c c c c f f f . . . . . 
-            . f f f f f f f f f f f f . . . . . 
-            . . f f f f f f f f f f . . . . . . 
-            . . e f f f f f f f f e . . . . . . 
-            . e 4 f f f f f f f f 4 e . . . . . 
-            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
-            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
-            . . . . f f f f f f . . . . . . . . 
-            . . . . f f . . f f . . . . . . . . 
-            `],
-        500,
-        false
-        )
+    for (let value10 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value10.image.equals(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . d d d . 
+            . . . . . . . . . . . d d 7 d . 
+            . . . . . . . . . . d d 7 d d . 
+            . . . . . . . . . d d 7 d d . . 
+            . . . . . . . . d d 7 d d . . . 
+            . . . . . . . d d 7 d d . . . . 
+            . e e . . . d d 7 d d . . . . . 
+            . e 7 e . d d 7 d d . . . . . . 
+            . . e e e e e d d . . . . . . . 
+            . . . e 7 7 e d . . . . . . . . 
+            . . e e 7 7 e . . . . . . . . . 
+            . e e e e e e e . . . . . . . . 
+            e e e e e . e 7 e . . . . . . . 
+            e 7 e e . . . e e . . . . . . . 
+            e e e . . . . . . . . . . . . . 
+            `)) {
+            animation.runImageAnimation(
+            player1,
+            [img`
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f f c c c c c c f f f . . d d . 
+                . f f f f f f f f f f f f . d 7 d . 
+                . . f f f f f f f f f e . d 7 d . . 
+                . . e f f f f f f f f e e e d . . . 
+                . e 4 f f f f f f f f 4 7 e . . . . 
+                . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+                . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+                . . . . f f f f f f . . . . . . . . 
+                . . . . f f . . f f . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . . . 
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c f f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f c c c c c c f f f f . . . . . 
+                . f f f f f f f f f f f f . . . . . 
+                . . f f f f f f f f f f . e e . . . 
+                . . e f f f f f f f f e 7 e . . . . 
+                . . e f f f f f f f f 4 e e d . . . 
+                . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+                . . e f f f f f f e e 4 . . d 7 d . 
+                . . . f f f . . . . . . . . . d d . 
+                `,img`
+                . . . . . . . . . . . . . . . . . . 
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f f c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f d . . . . 
+                . f f f f c c c c c c f f d . . . . 
+                . f f f f f f f f f f f f d . . . . 
+                . . f f f f f f f f f f 7 d . . . . 
+                . . e f f f f f f f f e e e . . . . 
+                . e 4 f f f f f f f f e 7 e . . . . 
+                . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+                . . 4 e e f f f f f f e . . . . . . 
+                . . . . . . . . f f f . . . . . . . 
+                `,img`
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f f c c c c c c f f f . . . . . 
+                . f f f f f f f f f f f f . . . . . 
+                . . f f f f f f f f f f . . . . . . 
+                . . e f f f f f f f f e . . . . . . 
+                . e 4 f f f f f f f f 4 e . . . . . 
+                . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+                . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+                . . . . f f f f f f . . . . . . . . 
+                . . . . f f . . f f . . . . . . . . 
+                `],
+            500,
+            false
+            )
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_2.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_3.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_4.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else if (inventory_5.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-    } else {
-        game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
+    for (let value4 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value4.image.equals(img`
+            . . . . . 5 . . . . . . . . . . 
+            . 5 5 . . . 5 . . . . 5 5 . . . 
+            . . 5 5 . . 5 5 . . 5 5 . . . . 
+            . . . 5 . . . . . . . . . . . . 
+            . . . . . 5 5 5 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+            5 5 5 . . 5 5 . 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . . . . . . 
+            . . . . . 5 5 5 5 5 . 5 . . . . 
+            . . 5 5 . . . . 5 5 . 5 5 . . . 
+            . 5 5 . . . . . 5 5 . . 5 5 . . 
+            . 5 . . . . . . 5 5 . . . 5 . . 
+            . . . . . . . 5 5 5 . . . 5 . . 
+            . . . . . . . . 5 5 . . . . . . 
+            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level5`)
+            tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+            sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+            sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+        }
     }
     chest_position = [
     tiles.getTileLocation(13, 2),
@@ -757,7 +303,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     tiles.getTileLocation(11, 8),
     tiles.getTileLocation(1, 14)
     ]
-    SpawnEnemies()
 })
 function SpawnEnemies () {
     for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
@@ -766,7 +311,7 @@ function SpawnEnemies () {
         if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
             tiles.setTileAt(value2, assets.tile`myTile3`)
         } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(4, 0), sprites.dungeon.greenOuterNorthEast)) {
-            tiles.setTileAt(value2, sprites.dungeon.floorDark0)
+            tiles.setTileAt(value2, sprites.dungeon.floorDarkDiamond)
         } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), sprites.dungeon.floorLight2)) {
             tiles.setTileAt(value2, assets.tile`myTile1`)
         }
@@ -862,113 +407,29 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_2.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_3.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_4.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_5.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else {
-        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    for (let value8 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value8.image.equals(img`
+            . . . . . 9 . . . . . . . . . . 
+            . 9 9 . . . 9 . . . . 9 9 . . . 
+            . . 9 9 . . 9 9 . . 9 9 . . . . 
+            . . . 9 . . . . . . . . . . . . 
+            . . . . . 9 9 9 9 9 . . . . . . 
+            . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+            9 9 9 . . 9 9 . 9 9 . . . . . . 
+            . . . . . 9 . 9 . 9 . . . . . . 
+            . . . . . 9 9 9 9 9 . 9 . . . . 
+            . . 9 9 . . . . 9 9 . 9 9 . . . 
+            . 9 9 . . . . . 9 9 . . 9 9 . . 
+            . 9 . . . . . . 9 9 . . . 9 . . 
+            . . . . . . . 9 9 9 . . . 9 . . 
+            . . . . . . . . 9 9 . . . . . . 
+            . . . . . . . 9 9 9 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level82`)
+            tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
+            game.setGameOverMessage(true, "Congratulations, You Escaped!")
+        }
     }
 })
 function items (list: Image[]) {
@@ -1009,108 +470,28 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_2.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_3.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_4.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_5.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else {
-        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    for (let value7 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value7.image.equals(img`
+            . . . . . b . . . . . . . . . . 
+            . b b . . . b . . . . b b . . . 
+            . . b b . . b b . . b b . . . . 
+            . . . b . . . . . . . . . . . . 
+            . . . . . b b b b b . . . . . . 
+            . . . . . b . b . b . b b b b . 
+            b b b . . b b . b b . . . . . . 
+            . . . . . b . b . b . . . . . . 
+            . . . . . b b b b b . b . . . . 
+            . . b b . . . . b b . b b . . . 
+            . b b . . . . . b b . . b b . . 
+            . b . . . . . . b b . . . b . . 
+            . . . . . . . b b b . . . b . . 
+            . . . . . . . . b b . . . . . . 
+            . . . . . . . b b b . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level24`)
+            tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+        }
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1173,218 +554,54 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_2.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_3.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_4.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else if (inventory_5.image.equals(img`
-        . . . . . 9 . . . . . . . . . . 
-        . 9 9 . . . 9 . . . . 9 9 . . . 
-        . . 9 9 . . 9 9 . . 9 9 . . . . 
-        . . . 9 . . . . . . . . . . . . 
-        . . . . . 9 9 9 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . 9 9 9 9 . 
-        9 9 9 . . 9 9 . 9 9 . . . . . . 
-        . . . . . 9 . 9 . 9 . . . . . . 
-        . . . . . 9 9 9 9 9 . 9 . . . . 
-        . . 9 9 . . . . 9 9 . 9 9 . . . 
-        . 9 9 . . . . . 9 9 . . 9 9 . . 
-        . 9 . . . . . . 9 9 . . . 9 . . 
-        . . . . . . . 9 9 9 . . . 9 . . 
-        . . . . . . . . 9 9 . . . . . . 
-        . . . . . . . 9 9 9 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level88`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        game.setGameOverMessage(true, "Congratulations, You Escaped!")
-    } else {
-        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    for (let value9 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value9.image.equals(img`
+            . . . . . 9 . . . . . . . . . . 
+            . 9 9 . . . 9 . . . . 9 9 . . . 
+            . . 9 9 . . 9 9 . . 9 9 . . . . 
+            . . . 9 . . . . . . . . . . . . 
+            . . . . . 9 9 9 9 9 . . . . . . 
+            . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+            9 9 9 . . 9 9 . 9 9 . . . . . . 
+            . . . . . 9 . 9 . 9 . . . . . . 
+            . . . . . 9 9 9 9 9 . 9 . . . . 
+            . . 9 9 . . . . 9 9 . 9 9 . . . 
+            . 9 9 . . . . . 9 9 . . 9 9 . . 
+            . 9 . . . . . . 9 9 . . . 9 . . 
+            . . . . . . . 9 9 9 . . . 9 . . 
+            . . . . . . . . 9 9 . . . . . . 
+            . . . . . . . 9 9 9 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level82`)
+            tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
+            game.setGameOverMessage(true, "Congratulations, You Escaped!")
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_2.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_3.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_4.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_5.image.equals(img`
-        . . . . . b . . . . . . . . . . 
-        . b b . . . b . . . . b b . . . 
-        . . b b . . b b . . b b . . . . 
-        . . . b . . . . . . . . . . . . 
-        . . . . . b b b b b . . . . . . 
-        . . . . . b . b . b . b b b b . 
-        b b b . . b b . b b . . . . . . 
-        . . . . . b . b . b . . . . . . 
-        . . . . . b b b b b . b . . . . 
-        . . b b . . . . b b . b b . . . 
-        . b b . . . . . b b . . b b . . 
-        . b . . . . . . b b . . . b . . 
-        . . . . . . . b b b . . . b . . 
-        . . . . . . . . b b . . . . . . 
-        . . . . . . . b b b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level24`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else {
-        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    for (let value6 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value6.image.equals(img`
+            . . . . . b . . . . . . . . . . 
+            . b b . . . b . . . . b b . . . 
+            . . b b . . b b . . b b . . . . 
+            . . . b . . . . . . . . . . . . 
+            . . . . . b b b b b . . . . . . 
+            . . . . . b . b . b . b b b b . 
+            b b b . . b b . b b . . . . . . 
+            . . . . . b . b . b . . . . . . 
+            . . . . . b b b b b . b . . . . 
+            . . b b . . . . b b . b b . . . 
+            . b b . . . . . b b . . b b . . 
+            . b . . . . . . b b . . . b . . 
+            . . . . . . . b b b . . . b . . 
+            . . . . . . . . b b . . . . . . 
+            . . . . . . . b b b . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level24`)
+            tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+        }
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1447,108 +664,28 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . 6 . . . . . . . . . . 
-        . 6 6 . . . 6 . . . . 6 6 . . . 
-        . . 6 6 . . 6 6 . . 6 6 . . . . 
-        . . . 6 . . . . . . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-        6 6 6 . . 6 6 . 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . . . . . . 
-        . . . . . 6 6 6 6 6 . 6 . . . . 
-        . . 6 6 . . . . 6 6 . 6 6 . . . 
-        . 6 6 . . . . . 6 6 . . 6 6 . . 
-        . 6 . . . . . . 6 6 . . . 6 . . 
-        . . . . . . . 6 6 6 . . . 6 . . 
-        . . . . . . . . 6 6 . . . . . . 
-        . . . . . . . 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_2.image.equals(img`
-        . . . . . 6 . . . . . . . . . . 
-        . 6 6 . . . 6 . . . . 6 6 . . . 
-        . . 6 6 . . 6 6 . . 6 6 . . . . 
-        . . . 6 . . . . . . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-        6 6 6 . . 6 6 . 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . . . . . . 
-        . . . . . 6 6 6 6 6 . 6 . . . . 
-        . . 6 6 . . . . 6 6 . 6 6 . . . 
-        . 6 6 . . . . . 6 6 . . 6 6 . . 
-        . 6 . . . . . . 6 6 . . . 6 . . 
-        . . . . . . . 6 6 6 . . . 6 . . 
-        . . . . . . . . 6 6 . . . . . . 
-        . . . . . . . 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_3.image.equals(img`
-        . . . . . 6 . . . . . . . . . . 
-        . 6 6 . . . 6 . . . . 6 6 . . . 
-        . . 6 6 . . 6 6 . . 6 6 . . . . 
-        . . . 6 . . . . . . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-        6 6 6 . . 6 6 . 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . . . . . . 
-        . . . . . 6 6 6 6 6 . 6 . . . . 
-        . . 6 6 . . . . 6 6 . 6 6 . . . 
-        . 6 6 . . . . . 6 6 . . 6 6 . . 
-        . 6 . . . . . . 6 6 . . . 6 . . 
-        . . . . . . . 6 6 6 . . . 6 . . 
-        . . . . . . . . 6 6 . . . . . . 
-        . . . . . . . 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_4.image.equals(img`
-        . . . . . 6 . . . . . . . . . . 
-        . 6 6 . . . 6 . . . . 6 6 . . . 
-        . . 6 6 . . 6 6 . . 6 6 . . . . 
-        . . . 6 . . . . . . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-        6 6 6 . . 6 6 . 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . . . . . . 
-        . . . . . 6 6 6 6 6 . 6 . . . . 
-        . . 6 6 . . . . 6 6 . 6 6 . . . 
-        . 6 6 . . . . . 6 6 . . 6 6 . . 
-        . 6 . . . . . . 6 6 . . . 6 . . 
-        . . . . . . . 6 6 6 . . . 6 . . 
-        . . . . . . . . 6 6 . . . . . . 
-        . . . . . . . 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else if (inventory_5.image.equals(img`
-        . . . . . 6 . . . . . . . . . . 
-        . 6 6 . . . 6 . . . . 6 6 . . . 
-        . . 6 6 . . 6 6 . . 6 6 . . . . 
-        . . . 6 . . . . . . . . . . . . 
-        . . . . . 6 6 6 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-        6 6 6 . . 6 6 . 6 6 . . . . . . 
-        . . . . . 6 . 6 . 6 . . . . . . 
-        . . . . . 6 6 6 6 6 . 6 . . . . 
-        . . 6 6 . . . . 6 6 . 6 6 . . . 
-        . 6 6 . . . . . 6 6 . . 6 6 . . 
-        . 6 . . . . . . 6 6 . . . 6 . . 
-        . . . . . . . 6 6 6 . . . 6 . . 
-        . . . . . . . . 6 6 . . . . . . 
-        . . . . . . . 6 6 6 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-    } else {
-        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    for (let value5 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value5.image.equals(img`
+            . . . . . 6 . . . . . . . . . . 
+            . 6 6 . . . 6 . . . . 6 6 . . . 
+            . . 6 6 . . 6 6 . . 6 6 . . . . 
+            . . . 6 . . . . . . . . . . . . 
+            . . . . . 6 6 6 6 6 . . . . . . 
+            . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+            6 6 6 . . 6 6 . 6 6 . . . . . . 
+            . . . . . 6 . 6 . 6 . . . . . . 
+            . . . . . 6 6 6 6 6 . 6 . . . . 
+            . . 6 6 . . . . 6 6 . 6 6 . . . 
+            . 6 6 . . . . . 6 6 . . 6 6 . . 
+            . 6 . . . . . . 6 6 . . . 6 . . 
+            . . . . . . . 6 6 6 . . . 6 . . 
+            . . . . . . . . 6 6 . . . . . . 
+            . . . . . . . 6 6 6 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level3`)
+            tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
@@ -1558,7 +695,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, 
 let Creatures: Sprite = null
 let chest_position: tiles.Location[] = []
 let pickaxe: Sprite = null
-let player1: Sprite = null
 let Chest: Sprite = null
 let Enemies: Image[] = []
 let keys: Image[] = []
@@ -1567,7 +703,12 @@ let inventory_4: Sprite = null
 let inventory_3: Sprite = null
 let inventory_2: Sprite = null
 let inventory_1: Sprite = null
+let player1: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
+let statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+statusbar.attachToSprite(player1)
+statusbar.positionDirection(CollisionDirection.Top)
+statusbar.positionDirection(CollisionDirection.Right)
 inventory_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
