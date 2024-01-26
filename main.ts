@@ -173,14 +173,470 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         }
     }
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (inventory_1.image.equals(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d . 
+        . . . . . . . . . . . d d 7 d . 
+        . . . . . . . . . . d d 7 d d . 
+        . . . . . . . . . d d 7 d d . . 
+        . . . . . . . . d d 7 d d . . . 
+        . . . . . . . d d 7 d d . . . . 
+        . e e . . . d d 7 d d . . . . . 
+        . e 7 e . d d 7 d d . . . . . . 
+        . . e e e e e d d . . . . . . . 
+        . . . e 7 7 e d . . . . . . . . 
+        . . e e 7 7 e . . . . . . . . . 
+        . e e e e e e e . . . . . . . . 
+        e e e e e . e 7 e . . . . . . . 
+        e 7 e e . . . e e . . . . . . . 
+        e e e . . . . . . . . . . . . . 
+        `)) {
+        animation.runImageAnimation(
+        player1,
+        [img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . d d . 
+            . f f f f f f f f f f f f . d 7 d . 
+            . . f f f f f f f f f e . d 7 d . . 
+            . . e f f f f f f f f e e e d . . . 
+            . e 4 f f f f f f f f 4 7 e . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c f f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f c c c c c c f f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . e e . . . 
+            . . e f f f f f f f f e 7 e . . . . 
+            . . e f f f f f f f f 4 e e d . . . 
+            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+            . . e f f f f f f e e 4 . . d 7 d . 
+            . . . f f f . . . . . . . . . d d . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f f c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f d . . . . 
+            . f f f f c c c c c c f f d . . . . 
+            . f f f f f f f f f f f f d . . . . 
+            . . f f f f f f f f f f 7 d . . . . 
+            . . e f f f f f f f f e e e . . . . 
+            . e 4 f f f f f f f f e 7 e . . . . 
+            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+            . . 4 e e f f f f f f e . . . . . . 
+            . . . . . . . . f f f . . . . . . . 
+            `,img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . . . . . . 
+            . . e f f f f f f f f e . . . . . . 
+            . e 4 f f f f f f f f 4 e . . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    } else if (inventory_2.image.equals(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d . 
+        . . . . . . . . . . . d d 7 d . 
+        . . . . . . . . . . d d 7 d d . 
+        . . . . . . . . . d d 7 d d . . 
+        . . . . . . . . d d 7 d d . . . 
+        . . . . . . . d d 7 d d . . . . 
+        . e e . . . d d 7 d d . . . . . 
+        . e 7 e . d d 7 d d . . . . . . 
+        . . e e e e e d d . . . . . . . 
+        . . . e 7 7 e d . . . . . . . . 
+        . . e e 7 7 e . . . . . . . . . 
+        . e e e e e e e . . . . . . . . 
+        e e e e e . e 7 e . . . . . . . 
+        e 7 e e . . . e e . . . . . . . 
+        e e e . . . . . . . . . . . . . 
+        `)) {
+        animation.runImageAnimation(
+        player1,
+        [img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . d d . 
+            . f f f f f f f f f f f f . d 7 d . 
+            . . f f f f f f f f f e . d 7 d . . 
+            . . e f f f f f f f f e e e d . . . 
+            . e 4 f f f f f f f f 4 7 e . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c f f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f c c c c c c f f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . e e . . . 
+            . . e f f f f f f f f e 7 e . . . . 
+            . . e f f f f f f f f 4 e e d . . . 
+            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+            . . e f f f f f f e e 4 . . d 7 d . 
+            . . . f f f . . . . . . . . . d d . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f f c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f d . . . . 
+            . f f f f c c c c c c f f d . . . . 
+            . f f f f f f f f f f f f d . . . . 
+            . . f f f f f f f f f f 7 d . . . . 
+            . . e f f f f f f f f e e e . . . . 
+            . e 4 f f f f f f f f e 7 e . . . . 
+            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+            . . 4 e e f f f f f f e . . . . . . 
+            . . . . . . . . f f f . . . . . . . 
+            `,img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . . . . . . 
+            . . e f f f f f f f f e . . . . . . 
+            . e 4 f f f f f f f f 4 e . . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    } else if (inventory_3.image.equals(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d . 
+        . . . . . . . . . . . d d 7 d . 
+        . . . . . . . . . . d d 7 d d . 
+        . . . . . . . . . d d 7 d d . . 
+        . . . . . . . . d d 7 d d . . . 
+        . . . . . . . d d 7 d d . . . . 
+        . e e . . . d d 7 d d . . . . . 
+        . e 7 e . d d 7 d d . . . . . . 
+        . . e e e e e d d . . . . . . . 
+        . . . e 7 7 e d . . . . . . . . 
+        . . e e 7 7 e . . . . . . . . . 
+        . e e e e e e e . . . . . . . . 
+        e e e e e . e 7 e . . . . . . . 
+        e 7 e e . . . e e . . . . . . . 
+        e e e . . . . . . . . . . . . . 
+        `)) {
+        animation.runImageAnimation(
+        player1,
+        [img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . d d . 
+            . f f f f f f f f f f f f . d 7 d . 
+            . . f f f f f f f f f e . d 7 d . . 
+            . . e f f f f f f f f e e e d . . . 
+            . e 4 f f f f f f f f 4 7 e . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c f f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f c c c c c c f f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . e e . . . 
+            . . e f f f f f f f f e 7 e . . . . 
+            . . e f f f f f f f f 4 e e d . . . 
+            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+            . . e f f f f f f e e 4 . . d 7 d . 
+            . . . f f f . . . . . . . . . d d . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f f c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f d . . . . 
+            . f f f f c c c c c c f f d . . . . 
+            . f f f f f f f f f f f f d . . . . 
+            . . f f f f f f f f f f 7 d . . . . 
+            . . e f f f f f f f f e e e . . . . 
+            . e 4 f f f f f f f f e 7 e . . . . 
+            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+            . . 4 e e f f f f f f e . . . . . . 
+            . . . . . . . . f f f . . . . . . . 
+            `,img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . . . . . . 
+            . . e f f f f f f f f e . . . . . . 
+            . e 4 f f f f f f f f 4 e . . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    } else if (inventory_4.image.equals(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d . 
+        . . . . . . . . . . . d d 7 d . 
+        . . . . . . . . . . d d 7 d d . 
+        . . . . . . . . . d d 7 d d . . 
+        . . . . . . . . d d 7 d d . . . 
+        . . . . . . . d d 7 d d . . . . 
+        . e e . . . d d 7 d d . . . . . 
+        . e 7 e . d d 7 d d . . . . . . 
+        . . e e e e e d d . . . . . . . 
+        . . . e 7 7 e d . . . . . . . . 
+        . . e e 7 7 e . . . . . . . . . 
+        . e e e e e e e . . . . . . . . 
+        e e e e e . e 7 e . . . . . . . 
+        e 7 e e . . . e e . . . . . . . 
+        e e e . . . . . . . . . . . . . 
+        `)) {
+        animation.runImageAnimation(
+        player1,
+        [img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . d d . 
+            . f f f f f f f f f f f f . d 7 d . 
+            . . f f f f f f f f f e . d 7 d . . 
+            . . e f f f f f f f f e e e d . . . 
+            . e 4 f f f f f f f f 4 7 e . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c f f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f c c c c c c f f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . e e . . . 
+            . . e f f f f f f f f e 7 e . . . . 
+            . . e f f f f f f f f 4 e e d . . . 
+            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+            . . e f f f f f f e e 4 . . d 7 d . 
+            . . . f f f . . . . . . . . . d d . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f f c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f d . . . . 
+            . f f f f c c c c c c f f d . . . . 
+            . f f f f f f f f f f f f d . . . . 
+            . . f f f f f f f f f f 7 d . . . . 
+            . . e f f f f f f f f e e e . . . . 
+            . e 4 f f f f f f f f e 7 e . . . . 
+            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+            . . 4 e e f f f f f f e . . . . . . 
+            . . . . . . . . f f f . . . . . . . 
+            `,img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . . . . . . 
+            . . e f f f f f f f f e . . . . . . 
+            . e 4 f f f f f f f f 4 e . . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    } else if (inventory_5.image.equals(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d . 
+        . . . . . . . . . . . d d 7 d . 
+        . . . . . . . . . . d d 7 d d . 
+        . . . . . . . . . d d 7 d d . . 
+        . . . . . . . . d d 7 d d . . . 
+        . . . . . . . d d 7 d d . . . . 
+        . e e . . . d d 7 d d . . . . . 
+        . e 7 e . d d 7 d d . . . . . . 
+        . . e e e e e d d . . . . . . . 
+        . . . e 7 7 e d . . . . . . . . 
+        . . e e 7 7 e . . . . . . . . . 
+        . e e e e e e e . . . . . . . . 
+        e e e e e . e 7 e . . . . . . . 
+        e 7 e e . . . e e . . . . . . . 
+        e e e . . . . . . . . . . . . . 
+        `)) {
+        animation.runImageAnimation(
+        player1,
+        [img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . d d . 
+            . f f f f f f f f f f f f . d 7 d . 
+            . . f f f f f f f f f e . d 7 d . . 
+            . . e f f f f f f f f e e e d . . . 
+            . e 4 f f f f f f f f 4 7 e . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c f f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f c c c c c c f f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . e e . . . 
+            . . e f f f f f f f f e 7 e . . . . 
+            . . e f f f f f f f f 4 e e d . . . 
+            . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+            . . e f f f f f f e e 4 . . d 7 d . 
+            . . . f f f . . . . . . . . . d d . 
+            `,img`
+            . . . . . . . . . . . . . . . . . . 
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f f c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f d . . . . 
+            . f f f f c c c c c c f f d . . . . 
+            . f f f f f f f f f f f f d . . . . 
+            . . f f f f f f f f f f 7 d . . . . 
+            . . e f f f f f f f f e e e . . . . 
+            . e 4 f f f f f f f f e 7 e . . . . 
+            . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+            . . 4 e e f f f f f f e . . . . . . 
+            . . . . . . . . f f f . . . . . . . 
+            `,img`
+            . f f f . f f f f . f f f . . . . . 
+            f f f f f c c c c f f f f f . . . . 
+            f f f f b c c c c b f f f f . . . . 
+            f f f c 3 c c c c 3 c f f f . . . . 
+            . f 3 3 c c c c c c 3 3 f . . . . . 
+            . f c c c c c c c c c c f . . . . . 
+            . f f c c c c c c c c f f . . . . . 
+            . f f f c c c c c c f f f . . . . . 
+            . f f f f f f f f f f f f . . . . . 
+            . . f f f f f f f f f f . . . . . . 
+            . . e f f f f f f f f e . . . . . . 
+            . e 4 f f f f f f f f 4 e . . . . . 
+            . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+            . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+            . . . . f f f f f f . . . . . . . . 
+            . . . . f f . . f f . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    chest_position = [
-    tiles.getTileLocation(13, 2),
-    tiles.getTileLocation(3, 3),
-    tiles.getTileLocation(4, 6),
-    tiles.getTileLocation(11, 8),
-    tiles.getTileLocation(1, 14)
-    ]
     if (inventory_1.image.equals(img`
         . . . . . 5 . . . . . . . . . . 
         . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -294,6 +750,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
+    chest_position = [
+    tiles.getTileLocation(13, 2),
+    tiles.getTileLocation(3, 3),
+    tiles.getTileLocation(4, 6),
+    tiles.getTileLocation(11, 8),
+    tiles.getTileLocation(1, 14)
+    ]
     SpawnEnemies()
 })
 function SpawnEnemies () {
@@ -303,12 +766,16 @@ function SpawnEnemies () {
         if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
             tiles.setTileAt(value2, assets.tile`myTile3`)
         } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(4, 0), sprites.dungeon.greenOuterNorthEast)) {
-            tiles.setTileAt(value2, sprites.dungeon.floorLight0)
+            tiles.setTileAt(value2, sprites.dungeon.floorDark0)
         } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), sprites.dungeon.floorLight2)) {
             tiles.setTileAt(value2, assets.tile`myTile1`)
         }
     }
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 1))
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
@@ -413,6 +880,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_2.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -432,6 +901,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_3.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -451,6 +922,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_4.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -470,6 +943,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_5.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -489,6 +964,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else {
         game.showLongText("You don't have this key!", DialogLayout.Bottom)
@@ -611,6 +1088,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
         . . . . . . . . . . . . . . . . 
         `)) {
         tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
     } else if (inventory_5.image.equals(img`
         . . . . . b . . . . . . . . . . 
         . b b . . . b . . . . b b . . . 
@@ -713,6 +1191,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_2.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -732,6 +1212,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_3.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -751,6 +1233,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_4.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -770,6 +1254,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else if (inventory_5.image.equals(img`
         . . . . . 9 . . . . . . . . . . 
@@ -789,6 +1275,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
         . . . . . . . 9 9 9 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `)) {
+        tiles.setCurrentTilemap(tilemap`level88`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
         game.setGameOverMessage(true, "Congratulations, You Escaped!")
     } else {
         game.showLongText("You don't have this key!", DialogLayout.Bottom)
@@ -1062,6 +1550,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     } else {
         game.showLongText("You don't have this key!", DialogLayout.Bottom)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(7, 1))
 })
 let Creatures: Sprite = null
 let chest_position: tiles.Location[] = []
