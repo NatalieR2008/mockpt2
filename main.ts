@@ -426,7 +426,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
             . . . . . . . 9 9 9 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)) {
-            tiles.setCurrentTilemap(tilemap`level82`)
+            tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "Congratulations, You Escaped!")
         }
@@ -573,7 +573,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
             . . . . . . . 9 9 9 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)) {
-            tiles.setCurrentTilemap(tilemap`level82`)
+            tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "Congratulations, You Escaped!")
         }
