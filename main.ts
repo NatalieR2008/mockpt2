@@ -112,8 +112,8 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         } else if (player1.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorDark3)) {
             tiles.setTileAt(location, sprites.dungeon.darkGroundCenter)
             tiles.setWallAt(location, false)
-        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight3)) {
-            tiles.setTileAt(location, assets.tile`myTile3`)
+        } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight5)) {
+            tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
         }
     }
@@ -233,6 +233,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
 })
+function SpawnEnemies () {
+    for (let value of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
+        Creatures = sprites.create(Enemies[randint(0, keys.length - 1)], SpriteKind.Enemy)
+        tiles.placeOnTile(Creatures, value)
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
@@ -257,7 +263,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherS
         . b b . . . . . . . . . . b b . 
         `)
     otherSprite.setKind(SpriteKind.open_chest)
-    items(list)
+    items(keys)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -320,15 +326,15 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function items (list: Image[]) {
     if (list.length == 5) {
-        inventory_1.setImage(list.removeAt(randint(0, list.length - 1)))
+        inventory_1.setImage(list.removeAt(randint(0, keys.length - 1)))
     } else if (list.length == 4) {
-        inventory_2.setImage(list.removeAt(randint(0, list.length - 1)))
+        inventory_2.setImage(list.removeAt(randint(0, keys.length - 1)))
     } else if (list.length == 3) {
-        inventory_3.setImage(list.removeAt(randint(0, list.length - 1)))
+        inventory_3.setImage(list.removeAt(randint(0, keys.length - 1)))
     } else if (list.length == 2) {
-        inventory_4.setImage(list.removeAt(randint(0, list.length - 1)))
+        inventory_4.setImage(list.removeAt(randint(0, keys.length - 1)))
     } else {
-        inventory_5.setImage(list.removeAt(randint(0, list.length - 1)))
+        inventory_5.setImage(list.removeAt(randint(0, keys.length - 1)))
     }
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
@@ -356,8 +362,109 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level24`)
-    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    if (inventory_1.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_2.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_3.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_4.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_5.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else {
+        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -419,8 +526,109 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level24`)
-    tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    if (inventory_1.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_2.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_3.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_4.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_5.image.equals(img`
+        . . . . . b . . . . . . . . . . 
+        . b b . . . b . . . . b b . . . 
+        . . b b . . b b . . b b . . . . 
+        . . . b . . . . . . . . . . . . 
+        . . . . . b b b b b . . . . . . 
+        . . . . . b . b . b . b b b b . 
+        b b b . . b b . b b . . . . . . 
+        . . . . . b . b . b . . . . . . 
+        . . . . . b b b b b . b . . . . 
+        . . b b . . . . b b . b b . . . 
+        . b b . . . . . b b . . b b . . 
+        . b . . . . . . b b . . . b . . 
+        . . . . . . . b b b . . . b . . 
+        . . . . . . . . b b . . . . . . 
+        . . . . . . . b b b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level24`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else {
+        game.showLongText("You don't have this key!", DialogLayout.Bottom)
+    }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -482,37 +690,116 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    for (let value of inventory) {
-        if (inventory[value].image.equals(img`
-            . . . . . 6 . . . . . . . . . . 
-            . 6 6 . . . 6 . . . . 6 6 . . . 
-            . . 6 6 . . 6 6 . . 6 6 . . . . 
-            . . . 6 . . . . . . . . . . . . 
-            . . . . . 6 6 6 6 6 . . . . . . 
-            . . . . . 6 . 6 . 6 . 6 6 6 6 . 
-            6 6 6 . . 6 6 . 6 6 . . . . . . 
-            . . . . . 6 . 6 . 6 . . . . . . 
-            . . . . . 6 6 6 6 6 . 6 . . . . 
-            . . 6 6 . . . . 6 6 . 6 6 . . . 
-            . 6 6 . . . . . 6 6 . . 6 6 . . 
-            . 6 . . . . . . 6 6 . . . 6 . . 
-            . . . . . . . 6 6 6 . . . 6 . . 
-            . . . . . . . . 6 6 . . . . . . 
-            . . . . . . . 6 6 6 . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)) {
-            tiles.setCurrentTilemap(tilemap`level3`)
-            tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
-        } else {
-            game.showLongText("You don't have the closet key yet!", DialogLayout.Bottom)
-        }
+    if (inventory_1.image.equals(img`
+        . . . . . 6 . . . . . . . . . . 
+        . 6 6 . . . 6 . . . . 6 6 . . . 
+        . . 6 6 . . 6 6 . . 6 6 . . . . 
+        . . . 6 . . . . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+        6 6 6 . . 6 6 . 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . . . . . . 
+        . . . . . 6 6 6 6 6 . 6 . . . . 
+        . . 6 6 . . . . 6 6 . 6 6 . . . 
+        . 6 6 . . . . . 6 6 . . 6 6 . . 
+        . 6 . . . . . . 6 6 . . . 6 . . 
+        . . . . . . . 6 6 6 . . . 6 . . 
+        . . . . . . . . 6 6 . . . . . . 
+        . . . . . . . 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_2.image.equals(img`
+        . . . . . 6 . . . . . . . . . . 
+        . 6 6 . . . 6 . . . . 6 6 . . . 
+        . . 6 6 . . 6 6 . . 6 6 . . . . 
+        . . . 6 . . . . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+        6 6 6 . . 6 6 . 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . . . . . . 
+        . . . . . 6 6 6 6 6 . 6 . . . . 
+        . . 6 6 . . . . 6 6 . 6 6 . . . 
+        . 6 6 . . . . . 6 6 . . 6 6 . . 
+        . 6 . . . . . . 6 6 . . . 6 . . 
+        . . . . . . . 6 6 6 . . . 6 . . 
+        . . . . . . . . 6 6 . . . . . . 
+        . . . . . . . 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_3.image.equals(img`
+        . . . . . 6 . . . . . . . . . . 
+        . 6 6 . . . 6 . . . . 6 6 . . . 
+        . . 6 6 . . 6 6 . . 6 6 . . . . 
+        . . . 6 . . . . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+        6 6 6 . . 6 6 . 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . . . . . . 
+        . . . . . 6 6 6 6 6 . 6 . . . . 
+        . . 6 6 . . . . 6 6 . 6 6 . . . 
+        . 6 6 . . . . . 6 6 . . 6 6 . . 
+        . 6 . . . . . . 6 6 . . . 6 . . 
+        . . . . . . . 6 6 6 . . . 6 . . 
+        . . . . . . . . 6 6 . . . . . . 
+        . . . . . . . 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_4.image.equals(img`
+        . . . . . 6 . . . . . . . . . . 
+        . 6 6 . . . 6 . . . . 6 6 . . . 
+        . . 6 6 . . 6 6 . . 6 6 . . . . 
+        . . . 6 . . . . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+        6 6 6 . . 6 6 . 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . . . . . . 
+        . . . . . 6 6 6 6 6 . 6 . . . . 
+        . . 6 6 . . . . 6 6 . 6 6 . . . 
+        . 6 6 . . . . . 6 6 . . 6 6 . . 
+        . 6 . . . . . . 6 6 . . . 6 . . 
+        . . . . . . . 6 6 6 . . . 6 . . 
+        . . . . . . . . 6 6 . . . . . . 
+        . . . . . . . 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else if (inventory_5.image.equals(img`
+        . . . . . 6 . . . . . . . . . . 
+        . 6 6 . . . 6 . . . . 6 6 . . . 
+        . . 6 6 . . 6 6 . . 6 6 . . . . 
+        . . . 6 . . . . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . 6 6 6 6 . 
+        6 6 6 . . 6 6 . 6 6 . . . . . . 
+        . . . . . 6 . 6 . 6 . . . . . . 
+        . . . . . 6 6 6 6 6 . 6 . . . . 
+        . . 6 6 . . . . 6 6 . 6 6 . . . 
+        . 6 6 . . . . . 6 6 . . 6 6 . . 
+        . 6 . . . . . . 6 6 . . . 6 . . 
+        . . . . . . . 6 6 6 . . . 6 . . 
+        . . . . . . . . 6 6 . . . . . . 
+        . . . . . . . 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)) {
+        tiles.setCurrentTilemap(tilemap`level3`)
+        tiles.placeOnTile(player1, tiles.getTileLocation(8, 14))
+    } else {
+        game.showLongText("You don't have this key!", DialogLayout.Bottom)
     }
 })
+let Creatures: Sprite = null
 let pickaxe: Sprite = null
 let player1: Sprite = null
 let Chest: Sprite = null
-let inventory: Sprite[] = []
-let list: Image[] = []
+let Enemies: Image[] = []
+let keys: Image[] = []
 let inventory_5: Sprite = null
 let inventory_4: Sprite = null
 let inventory_3: Sprite = null
@@ -609,7 +896,7 @@ inventory_5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
-list = [
+keys = [
 img`
     . . . . . 5 . . . . . . . . . . 
     . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -701,12 +988,79 @@ img`
     e e e . . . . . . . . . . . . . 
     `
 ]
-inventory = [
-inventory_1,
-inventory_2,
-inventory_3,
-inventory_4,
-inventory_5
+Enemies = [
+img`
+    . . . . . . f f f f . . . . . . 
+    . . . . f f 1 1 1 1 f f . . . . 
+    . . . f b 1 1 1 1 1 1 b f . . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . f d 1 1 1 1 1 1 1 1 d f . . 
+    . . f d 1 1 1 1 1 1 1 1 d f . . 
+    . . f d d d 1 1 1 1 d d d f . . 
+    . . f b d b f d d f b d b f . . 
+    . . f c d c f 1 1 f c d c f . . 
+    . . . f b 1 1 1 1 1 1 b f . . . 
+    . . f f f c d b 1 b d f f f f . 
+    f c 1 1 1 c b f b f c 1 1 1 c f 
+    f 1 b 1 b 1 f f f f 1 b 1 b 1 f 
+    f b f b f f f f f f b f b f b f 
+    . . . . . f f f f f f . . . . . 
+    . . . . . . . f f f . . . . . . 
+    `,
+img`
+    . . f f f . . . . . . . . f f f 
+    . f f c c . . . . . . f c b b c 
+    f f c c . . . . . . f c b b c . 
+    f c f c . . . . . . f b c c c . 
+    f f f c c . c c . f c b b c c . 
+    f f c 3 c c 3 c c f b c b b c . 
+    f f b 3 b c 3 b c f b c c b c . 
+    . c b b b b b b c b b c c c . . 
+    . c 1 b b b 1 b b c c c c . . . 
+    c b b b b b b b b b c c . . . . 
+    c b c b b b c b b b b f . . . . 
+    f b 1 f f f 1 b b b b f c . . . 
+    f b b b b b b b b b b f c c . . 
+    . f b b b b b b b b c f . . . . 
+    . . f b b b b b b c f . . . . . 
+    . . . f f f f f f f . . . . . . 
+    `,
+img`
+    . . . . f f f f f . . . . . . . 
+    . . . f e e e e e f . . . . . . 
+    . . f d d d d e e e f . . . . . 
+    . c d f d d f d e e f f . . . . 
+    . c d f d d f d e e d d f . . . 
+    c d e e d d d d e e b d c . . . 
+    c d d d d c d d e e b d c . . . 
+    c c c c c d d e e e f c . . . . 
+    . f d d d d e e e f f . . . . . 
+    . . f f f f f e e e e f . . . . 
+    . . . . f f e e e e e e f . f f 
+    . . . f e e f e e f e e f . e f 
+    . . f e e f e e f e e e f . e f 
+    . f b d f d b f b b f e f f e f 
+    . f d d f d d f d d b e f f f f 
+    . . f f f f f f f f f f f f f . 
+    `,
+img`
+    . . . . . c c c c c c c . . . . 
+    . . . . c 6 7 7 7 7 7 6 c . . . 
+    . . . c 7 c 6 6 6 6 c 7 6 c . . 
+    . . c 6 7 6 f 6 6 f 6 7 7 c . . 
+    . . c 7 7 7 7 7 7 7 7 7 7 c . . 
+    . . f 7 8 1 f f 1 6 7 7 7 f . . 
+    . . f 6 f 1 f f 1 f 7 7 7 f . . 
+    . . . f f 2 2 2 2 f 7 7 6 f . . 
+    . . c c f 2 2 2 2 7 7 6 f c . . 
+    . c 7 7 7 7 7 7 7 7 c c 7 7 c . 
+    c 7 1 1 1 7 7 7 7 f c 6 7 7 7 c 
+    f 1 1 1 1 1 7 6 f c c 6 6 6 c c 
+    f 1 1 1 1 1 1 6 6 c 6 6 6 c . . 
+    f 6 1 1 1 1 1 6 6 6 6 6 6 c . . 
+    . f 6 1 1 1 1 1 6 6 6 6 c . . . 
+    . . f f c c c c c c c c . . . . 
+    `
 ]
 let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (Difficulty == "E") {
