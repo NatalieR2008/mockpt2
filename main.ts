@@ -115,6 +115,21 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         } else if (player1.tileKindAt(TileDirection.Left, sprites.dungeon.floorLight5)) {
             tiles.setTileAt(location, assets.tile`myTile1`)
             tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Top, sprites.dungeon.floorLight5)) {
+            tiles.setTileAt(location, assets.tile`myTile1`)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Right, sprites.dungeon.floorLight5)) {
+            tiles.setTileAt(location, assets.tile`myTile1`)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Bottom, sprites.dungeon.floorLight5)) {
+            tiles.setTileAt(location, assets.tile`myTile1`)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Left, assets.tile`myTile9`)) {
+            tiles.setTileAt(location, assets.tile`myTile3`)
+            tiles.setWallAt(location, false)
+        } else if (player1.tileKindAt(TileDirection.Right, assets.tile`myTile9`)) {
+            tiles.setTileAt(location, assets.tile`myTile3`)
+            tiles.setWallAt(location, false)
         }
     }
 })
@@ -829,21 +844,21 @@ img`
     . . . . . . . . . . . . . . . . 
     `,
 img`
-    . . . . . 3 . . . . . . . . . . 
-    . 3 3 . . . 3 . . . . 3 3 . . . 
-    . . 3 3 . . 3 3 . . 3 3 . . . . 
-    . . . 3 . . . . . . . . . . . . 
-    . . . . . 3 3 3 3 3 . . . . . . 
-    . . . . . 3 . 3 . 3 . 3 3 3 3 . 
-    3 3 3 . . 3 3 . 3 3 . . . . . . 
-    . . . . . 3 . 3 . 3 . . . . . . 
-    . . . . . 3 3 3 3 3 . 3 . . . . 
-    . . 3 3 . . . . 3 3 . 3 3 . . . 
-    . 3 3 . . . . . 3 3 . . 3 3 . . 
-    . 3 . . . . . . 3 3 . . . 3 . . 
-    . . . . . . . 3 3 3 . . . 3 . . 
-    . . . . . . . . 3 3 . . . . . . 
-    . . . . . . . 3 3 3 . . . . . . 
+    . . . . . 9 . . . . . . . . . . 
+    . 9 9 . . . 9 . . . . 9 9 . . . 
+    . . 9 9 . . 9 9 . . 9 9 . . . . 
+    . . . 9 . . . . . . . . . . . . 
+    . . . . . 9 9 9 9 9 . . . . . . 
+    . . . . . 9 . 9 . 9 . 9 9 9 9 . 
+    9 9 9 . . 9 9 . 9 9 . . . . . . 
+    . . . . . 9 . 9 . 9 . . . . . . 
+    . . . . . 9 9 9 9 9 . 9 . . . . 
+    . . 9 9 . . . . 9 9 . 9 9 . . . 
+    . 9 9 . . . . . 9 9 . . 9 9 . . 
+    . 9 . . . . . . 9 9 . . . 9 . . 
+    . . . . . . . 9 9 9 . . . 9 . . 
+    . . . . . . . . 9 9 . . . . . . 
+    . . . . . . . 9 9 9 . . . . . . 
     . . . . . . . . . . . . . . . . 
     `,
 img`
