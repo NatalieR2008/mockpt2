@@ -294,6 +294,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
             tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
             sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
             sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+            SpawnEnemies()
         }
     }
     chest_position = [
@@ -320,10 +321,12 @@ function SpawnEnemies () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(8, 1))
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
     otherSprite.setImage(img`
@@ -491,6 +494,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
             `)) {
             tiles.setCurrentTilemap(tilemap`level24`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+            SpawnEnemies()
         }
     }
 })
@@ -601,6 +606,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, l
             `)) {
             tiles.setCurrentTilemap(tilemap`level24`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+            SpawnEnemies()
         }
     }
 })
@@ -685,13 +692,123 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
             `)) {
             tiles.setCurrentTilemap(tilemap`level3`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            SpawnEnemies()
         }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(7, 1))
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    for (let value0 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value0.image.equals(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . d d d . 
+            . . . . . . . . . . . d d 7 d . 
+            . . . . . . . . . . d d 7 d d . 
+            . . . . . . . . . d d 7 d d . . 
+            . . . . . . . . d d 7 d d . . . 
+            . . . . . . . d d 7 d d . . . . 
+            . e e . . . d d 7 d d . . . . . 
+            . e 7 e . d d 7 d d . . . . . . 
+            . . e e e e e d d . . . . . . . 
+            . . . e 7 7 e d . . . . . . . . 
+            . . e e 7 7 e . . . . . . . . . 
+            . e e e e e e e . . . . . . . . 
+            e e e e e . e 7 e . . . . . . . 
+            e 7 e e . . . e e . . . . . . . 
+            e e e . . . . . . . . . . . . . 
+            `)) {
+            havesword = "yes"
+        }
+    }
+    if (havesword == "yes") {
+        if (controller.B.isPressed()) {
+            animation.runImageAnimation(
+            player1,
+            [img`
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f f c c c c c c f f f . . d d . 
+                . f f f f f f f f f f f f . d 7 d . 
+                . . f f f f f f f f f e . d 7 d . . 
+                . . e f f f f f f f f e e e d . . . 
+                . e 4 f f f f f f f f 4 7 e . . . . 
+                . 4 d f 3 3 3 3 3 3 c d 4 e e . . . 
+                . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+                . . . . f f f f f f . . . . . . . . 
+                . . . . f f . . f f . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . . . 
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c f f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f c c c c c c f f f f . . . . . 
+                . f f f f f f f f f f f f . . . . . 
+                . . f f f f f f f f f f . e e . . . 
+                . . e f f f f f f f f e 7 e . . . . 
+                . . e f f f f f f f f 4 e e d . . . 
+                . . 4 f 3 3 3 3 3 e d d e d 7 d . . 
+                . . e f f f f f f e e 4 . . d 7 d . 
+                . . . f f f . . . . . . . . . d d . 
+                `,img`
+                . . . . . . . . . . . . . . . . . . 
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f f c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f d . . . . 
+                . f f f f c c c c c c f f d . . . . 
+                . f f f f f f f f f f f f d . . . . 
+                . . f f f f f f f f f f 7 d . . . . 
+                . . e f f f f f f f f e e e . . . . 
+                . e 4 f f f f f f f f e 7 e . . . . 
+                . 4 d d e 3 3 3 3 3 f 4 e . . . . . 
+                . . 4 e e f f f f f f e . . . . . . 
+                . . . . . . . . f f f . . . . . . . 
+                `,img`
+                . f f f . f f f f . f f f . . . . . 
+                f f f f f c c c c f f f f f . . . . 
+                f f f f b c c c c b f f f f . . . . 
+                f f f c 3 c c c c 3 c f f f . . . . 
+                . f 3 3 c c c c c c 3 3 f . . . . . 
+                . f c c c c c c c c c c f . . . . . 
+                . f f c c c c c c c c f f . . . . . 
+                . f f f c c c c c c f f f . . . . . 
+                . f f f f f f f f f f f f . . . . . 
+                . . f f f f f f f f f f . . . . . . 
+                . . e f f f f f f f f e . . . . . . 
+                . e 4 f f f f f f f f 4 e . . . . . 
+                . 4 d f 3 3 3 3 3 3 c d 4 . . . . . 
+                . 4 4 f 6 6 6 6 6 6 f 4 4 . . . . . 
+                . . . . f f f f f f . . . . . . . . 
+                . . . . f f . . f f . . . . . . . . 
+                `],
+            500,
+            false
+            )
+            sprites.destroy(otherSprite)
+        } else {
+            statusbarplayer1.value += -1
+        }
+    } else {
+        statusbarplayer1.value += -1
+    }
+})
+let havesword = ""
 let Creatures: Sprite = null
 let chest_position: tiles.Location[] = []
 let pickaxe: Sprite = null
@@ -704,11 +821,11 @@ let inventory_3: Sprite = null
 let inventory_2: Sprite = null
 let inventory_1: Sprite = null
 let player1: Sprite = null
+let statusbarplayer1: StatusBarSprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
-let statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-statusbar.attachToSprite(player1)
-statusbar.positionDirection(CollisionDirection.Top)
-statusbar.positionDirection(CollisionDirection.Right)
+statusbarplayer1 = statusbars.create(100, 4, StatusBarKind.Health)
+statusbarplayer1.attachToSprite(player1)
+statusbarplayer1.positionDirection(CollisionDirection.Bottom)
 inventory_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
