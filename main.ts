@@ -119,124 +119,37 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    if (inventory_1.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-    } else if (inventory_2.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-    } else if (inventory_3.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-    } else if (inventory_4.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-    } else if (inventory_5.image.equals(img`
-        . . . . . 5 . . . . . . . . . . 
-        . 5 5 . . . 5 . . . . 5 5 . . . 
-        . . 5 5 . . 5 5 . . 5 5 . . . . 
-        . . . 5 . . . . . . . . . . . . 
-        . . . . . 5 5 5 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-        5 5 5 . . 5 5 . 5 5 . . . . . . 
-        . . . . . 5 . 5 . 5 . . . . . . 
-        . . . . . 5 5 5 5 5 . 5 . . . . 
-        . . 5 5 . . . . 5 5 . 5 5 . . . 
-        . 5 5 . . . . . 5 5 . . 5 5 . . 
-        . 5 . . . . . . 5 5 . . . 5 . . 
-        . . . . . . . 5 5 5 . . . 5 . . 
-        . . . . . . . . 5 5 . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)) {
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-        sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-        sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-    } else {
-        game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
+    for (let value of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value.image.equals(img`
+            . . . . . 5 . . . . . . . . . . 
+            . 5 5 . . . 5 . . . . 5 5 . . . 
+            . . 5 5 . . 5 5 . . 5 5 . . . . 
+            . . . 5 . . . . . . . . . . . . 
+            . . . . . 5 5 5 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+            5 5 5 . . 5 5 . 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . . . . . . 
+            . . . . . 5 5 5 5 5 . 5 . . . . 
+            . . 5 5 . . . . 5 5 . 5 5 . . . 
+            . 5 5 . . . . . 5 5 . . 5 5 . . 
+            . 5 . . . . . . 5 5 . . . 5 . . 
+            . . . . . . . 5 5 5 . . . 5 . . 
+            . . . . . . . . 5 5 . . . . . . 
+            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level5`)
+            tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+            SpawnEnemies()
+            sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+            sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+        }
     }
 })
 function SpawnEnemies () {
-    for (let value of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
+    for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
         Creatures = sprites.create(Enemies[randint(0, keys.length - 1)], SpriteKind.Enemy)
-        tiles.placeOnTile(Creatures, value)
+        tiles.placeOnTile(Creatures, value2)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
@@ -1070,7 +983,7 @@ if (Difficulty == "E") {
 } else {
     info.startCountdown(300)
 }
-for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
+for (let value3 of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
     Chest = sprites.create(img`
         . . b b b b b b b b b b b b . . 
         . b e 4 4 4 4 4 4 4 4 4 4 e b . 
@@ -1089,7 +1002,7 @@ for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
         b b b b b b b b b b b b b b b b 
         . b b . . . . . . . . . . b b . 
         `, SpriteKind.chest_)
-    Chest.setPosition(value.x, value.y)
+    Chest.setPosition(value3.x, value3.y)
 }
 player1 = sprites.create(img`
     . f f f . f f f f . f f f . 
