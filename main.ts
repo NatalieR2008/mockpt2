@@ -247,11 +247,19 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     } else {
         game.showLongText("You don't have the basement key yet!", DialogLayout.Bottom)
     }
+    SpawnEnemies()
 })
 function SpawnEnemies () {
     for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
         Creatures = sprites.create(Enemies[randint(0, keys.length - 1)], SpriteKind.Enemy)
         tiles.placeOnTile(Creatures, value2)
+        if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
+            tiles.setTileAt(value2, assets.tile`myTile3`)
+        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(4, 0), sprites.dungeon.greenOuterNorthEast)) {
+            tiles.setTileAt(value2, sprites.dungeon.floorLight0)
+        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), sprites.dungeon.floorLight2)) {
+            tiles.setTileAt(value2, assets.tile`myTile1`)
+        }
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
