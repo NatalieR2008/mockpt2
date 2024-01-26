@@ -292,7 +292,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
             `)) {
             tiles.setCurrentTilemap(tilemap`level5`)
             tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-            SpawnEnemies()
             sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
             sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
         }
@@ -307,7 +306,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
 })
 function SpawnEnemies () {
     for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
-        Creatures = sprites.create(Enemies[randint(0, Enemies.length - 1)], SpriteKind.Enemy)
+        Creatures = sprites.create(Enemies[randint(0, keys.length - 1)], SpriteKind.Enemy)
         tiles.placeOnTile(Creatures, value2)
         if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
             tiles.setTileAt(value2, assets.tile`myTile3`)
@@ -430,7 +429,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
             tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "Congratulations, You Escaped!")
-            game.gameOver(true)
         }
     }
 })
@@ -969,11 +967,11 @@ img`
 ]
 let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
 if (Difficulty == "E") {
-    info.startCountdown(300)
+    info.startCountdown(600)
 } else if (Difficulty == "M") {
-    info.startCountdown(180)
+    info.startCountdown(480)
 } else {
-    info.startCountdown(80)
+    info.startCountdown(300)
 }
 for (let value3 of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
     Chest = sprites.create(img`
