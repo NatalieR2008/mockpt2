@@ -432,7 +432,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-            game.setGameOverMessage(true, "Congratulations, You Escaped!")
+            game.setGameOverMessage(true, "You Escaped!")
             game.gameOver(true)
         }
     }
@@ -591,7 +591,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
-            game.setGameOverMessage(true, "Congratulations, You Escaped!")
+            game.setGameOverMessage(true, "You Escaped!")
             game.gameOver(true)
         }
     }
