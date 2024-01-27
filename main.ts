@@ -429,11 +429,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, 
             . . . . . . . 9 9 9 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "Congratulations, You Escaped!")
+            game.gameOver(true)
         }
     }
+})
+info.onCountdownEnd(function () {
+    game.setGameOverMessage(false, "You didn't escape :(")
+    game.gameOver(false)
 })
 function items (list: Image[]) {
     if (list.length == 5) {
@@ -471,6 +477,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     while (!(controller.A.isPressed())) {
         game.showLongText("You found a pickaxe! (Can break cracked brick tiles)", DialogLayout.Bottom)
     }
+})
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    game.setGameOverMessage(false, "You didn't escape :(")
+    game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
     for (let value7 of sprites.allOfKind(SpriteKind.powerup)) {
@@ -578,9 +588,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
             . . . . . . . 9 9 9 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `)) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             tiles.setCurrentTilemap(tilemap`level95`)
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "Congratulations, You Escaped!")
+            game.gameOver(true)
         }
     }
 })
@@ -692,6 +704,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
             `)) {
             tiles.setCurrentTilemap(tilemap`level3`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             SpawnEnemies()
         }
     }
@@ -801,11 +814,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
             false
             )
             sprites.destroy(otherSprite)
+            info.changeScoreBy(2)
         } else {
+            info.changeScoreBy(-1)
             statusbarplayer1.value += -1
             pause(100)
         }
     } else {
+        info.changeScoreBy(-1)
         statusbarplayer1.value += -1
         pause(100)
     }
@@ -825,6 +841,7 @@ let inventory_1: Sprite = null
 let player1: Sprite = null
 let statusbarplayer1: StatusBarSprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
+info.setScore(0)
 statusbarplayer1 = statusbars.create(100, 4, StatusBarKind.Health)
 statusbarplayer1.attachToSprite(player1)
 statusbarplayer1.positionDirection(CollisionDirection.Bottom)
