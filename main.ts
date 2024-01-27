@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const powerup = SpriteKind.create()
     export const chest_ = SpriteKind.create()
     export const open_chest = SpriteKind.create()
+    export const decoration = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
@@ -173,7 +174,62 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         }
     }
 })
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    for (let value4 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value4.image.equals(img`
+            . . . . . 5 . . . . . . . . . . 
+            . 5 5 . . . 5 . . . . 5 5 . . . 
+            . . 5 5 . . 5 5 . . 5 5 . . . . 
+            . . . 5 . . . . . . . . . . . . 
+            . . . . . 5 5 5 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
+            5 5 5 . . 5 5 . 5 5 . . . . . . 
+            . . . . . 5 . 5 . 5 . . . . . . 
+            . . . . . 5 5 5 5 5 . 5 . . . . 
+            . . 5 5 . . . . 5 5 . 5 5 . . . 
+            . 5 5 . . . . . 5 5 . . 5 5 . . 
+            . 5 . . . . . . 5 5 . . . 5 . . 
+            . . . . . . . 5 5 5 . . . 5 . . 
+            . . . . . . . . 5 5 . . . . . . 
+            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level5`)
+            tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
+            sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
+            sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
+            SpawnEnemies()
+        }
+    }
+    chest_position = [
+    tiles.getTileLocation(13, 2),
+    tiles.getTileLocation(3, 3),
+    tiles.getTileLocation(4, 6),
+    tiles.getTileLocation(11, 8),
+    tiles.getTileLocation(1, 14)
+    ]
+})
+function SpawnEnemies () {
+    for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
+        Creatures = sprites.create(Enemies[randint(0, Enemies.length - 1)], SpriteKind.Enemy)
+        tiles.placeOnTile(Creatures, value2)
+        if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
+            tiles.setTileAt(value2, assets.tile`myTile3`)
+        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(4, 0), sprites.dungeon.greenOuterNorthEast)) {
+            tiles.setTileAt(value2, sprites.dungeon.floorDarkDiamond)
+        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), sprites.dungeon.floorLight2)) {
+            tiles.setTileAt(value2, assets.tile`myTile1`)
+        }
+        Creatures.setVelocity(50, 0)
+        Creatures.setBounceOnWall(true)
+    }
+}
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(8, 1))
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     for (let value10 of sprites.allOfKind(SpriteKind.powerup)) {
         if (value10.image.equals(img`
             . . . . . . . . . . . . . . . . 
@@ -269,59 +325,6 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             )
         }
     }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    for (let value4 of sprites.allOfKind(SpriteKind.powerup)) {
-        if (value4.image.equals(img`
-            . . . . . 5 . . . . . . . . . . 
-            . 5 5 . . . 5 . . . . 5 5 . . . 
-            . . 5 5 . . 5 5 . . 5 5 . . . . 
-            . . . 5 . . . . . . . . . . . . 
-            . . . . . 5 5 5 5 5 . . . . . . 
-            . . . . . 5 . 5 . 5 . 5 5 5 5 . 
-            5 5 5 . . 5 5 . 5 5 . . . . . . 
-            . . . . . 5 . 5 . 5 . . . . . . 
-            . . . . . 5 5 5 5 5 . 5 . . . . 
-            . . 5 5 . . . . 5 5 . 5 5 . . . 
-            . 5 5 . . . . . 5 5 . . 5 5 . . 
-            . 5 . . . . . . 5 5 . . . 5 . . 
-            . . . . . . . 5 5 5 . . . 5 . . 
-            . . . . . . . . 5 5 . . . . . . 
-            . . . . . . . 5 5 5 . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)) {
-            tiles.setCurrentTilemap(tilemap`level5`)
-            tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
-            sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
-            sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-            SpawnEnemies()
-        }
-    }
-    chest_position = [
-    tiles.getTileLocation(13, 2),
-    tiles.getTileLocation(3, 3),
-    tiles.getTileLocation(4, 6),
-    tiles.getTileLocation(11, 8),
-    tiles.getTileLocation(1, 14)
-    ]
-})
-function SpawnEnemies () {
-    for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
-        Creatures = sprites.create(Enemies[randint(0, Enemies.length - 1)], SpriteKind.Enemy)
-        tiles.placeOnTile(Creatures, value2)
-        if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
-            tiles.setTileAt(value2, assets.tile`myTile3`)
-        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(4, 0), sprites.dungeon.greenOuterNorthEast)) {
-            tiles.setTileAt(value2, sprites.dungeon.floorDarkDiamond)
-        } else if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), sprites.dungeon.floorLight2)) {
-            tiles.setTileAt(value2, assets.tile`myTile1`)
-        }
-    }
-}
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level3`)
-    tiles.placeOnTile(player1, tiles.getTileLocation(8, 1))
-    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level5`)
@@ -505,6 +508,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
             tiles.setCurrentTilemap(tilemap`level24`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+            sprites.destroyAllSpritesOfKind(SpriteKind.decoration)
             SpawnEnemies()
         }
     }
@@ -704,6 +708,57 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
             `)) {
             tiles.setCurrentTilemap(tilemap`level3`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            couch = sprites.create(img`
+                ..cccc..........
+                .c7776c.........
+                c67776cccccccc..
+                c67776cccccccc..
+                c67776c6677777c.
+                c67776c77777766c
+                c67776c66666666c
+                c67776c66666666c
+                c67776ccccccc66c
+                c67776c777776ccc
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67776c7777776c.
+                c67766c7777766c.
+                c66666ccccccccc.
+                c66666ccccccccc.
+                c66666c6677777c.
+                c66666c77777766c
+                c66666c77777766c
+                c66666c66666666c
+                c66666c66666666c
+                c66666c66666666c
+                c66666c66666666c
+                .ccccccccccccccc
+                .cbbc......cbbc.
+                `, SpriteKind.decoration)
+            tiles.placeOnTile(couch, tiles.getTileLocation(1, 6))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             SpawnEnemies()
         }
@@ -713,6 +768,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, 
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnTile(player1, tiles.getTileLocation(7, 1))
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    sprites.destroyAllSpritesOfKind(SpriteKind.decoration)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     for (let value0 of sprites.allOfKind(SpriteKind.powerup)) {
@@ -738,7 +794,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         }
     }
     if (havesword == "yes") {
-        if (controller.B.isPressed()) {
+        if (controller.A.isPressed()) {
             animation.runImageAnimation(
             player1,
             [img`
@@ -814,19 +870,18 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
             false
             )
             sprites.destroy(otherSprite)
-            info.changeScoreBy(2)
+            info.changeScoreBy(1)
         } else {
-            info.changeScoreBy(-1)
             statusbarplayer1.value += -1
             pause(100)
         }
     } else {
-        info.changeScoreBy(-1)
         statusbarplayer1.value += -1
         pause(100)
     }
 })
 let havesword = ""
+let couch: Sprite = null
 let Creatures: Sprite = null
 let chest_position: tiles.Location[] = []
 let pickaxe: Sprite = null
