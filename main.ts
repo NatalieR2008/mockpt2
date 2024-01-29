@@ -320,7 +320,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 . . . . f f f f f f . . . . . . . . 
                 . . . . f f . . f f . . . . . . . . 
                 `],
-            500,
+            200,
             false
             )
         }
@@ -330,6 +330,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     tiles.setCurrentTilemap(tilemap`level5`)
     tiles.placeOnTile(player1, tiles.getTileLocation(2, 1))
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    sprites.destroyAllSpritesOfKind(SpriteKind.decoration)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherSprite) {
     otherSprite.setImage(img`
