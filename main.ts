@@ -198,7 +198,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
             tiles.placeOnTile(player1, tiles.getTileLocation(2, 4))
             sprites.destroyAllSpritesOfKind(SpriteKind.open_chest)
             sprites.destroyAllSpritesOfKind(SpriteKind.chest_)
-            SpawnEnemies()
+            SpawnEnemies(Enemies)
         }
     }
     chest_position = [
@@ -209,9 +209,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     tiles.getTileLocation(1, 14)
     ]
 })
-function SpawnEnemies () {
+function SpawnEnemies (enemylist: Image[]) {
     for (let value2 of tiles.getTilesByType(sprites.dungeon.collectibleInsignia)) {
-        Creatures = sprites.create(Enemies[randint(0, Enemies.length - 1)], SpriteKind.Enemy)
+        Creatures = sprites.create(enemylist[randint(0, enemylist.length - 1)], SpriteKind.Enemy)
         tiles.placeOnTile(Creatures, value2)
         if (tiles.tileAtLocationEquals(tiles.getTileLocation(15, 0), assets.tile`myTile4`)) {
             tiles.setTileAt(value2, assets.tile`myTile3`)
@@ -510,7 +510,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             sprites.destroyAllSpritesOfKind(SpriteKind.decoration)
-            SpawnEnemies()
+            SpawnEnemies(Enemies)
         }
     }
 })
@@ -624,7 +624,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, l
             tiles.setCurrentTilemap(tilemap`level24`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-            SpawnEnemies()
+            SpawnEnemies(Enemies)
         }
     }
 })
@@ -761,7 +761,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
                 `, SpriteKind.decoration)
             tiles.placeOnTile(couch, tiles.getTileLocation(1, 6))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-            SpawnEnemies()
+            SpawnEnemies(Enemies)
         }
     }
 })
