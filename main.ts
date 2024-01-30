@@ -1157,10 +1157,10 @@ img`
     . . f f c c c c c c c c . . . . 
     `
 ]
-let Difficulty = game.askForString("Choose Difficulty (E,M,H)", 1)
-if (Difficulty == "E") {
+let Difficulty = game.askForString("Choose Difficulty (e,m,h)", 1)
+if (Difficulty == "e") {
     info.startCountdown(300)
-} else if (Difficulty == "M") {
+} else if (Difficulty == "m") {
     info.startCountdown(180)
 } else {
     info.startCountdown(80)
