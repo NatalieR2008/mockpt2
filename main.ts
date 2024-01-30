@@ -352,7 +352,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.chest_, function (sprite, otherS
         . b b . . . . . . . . . . b b . 
         `)
     otherSprite.setKind(SpriteKind.open_chest)
-    items(keys)
+    items()
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -445,17 +445,17 @@ info.onCountdownEnd(function () {
     game.setGameOverMessage(false, "You didn't escape :(")
     game.gameOver(false)
 })
-function items (list: Image[]) {
-    if (list.length == 5) {
-        inventory_1.setImage(list.removeAt(randint(0, keys.length - 1)))
-    } else if (list.length == 4) {
-        inventory_2.setImage(list.removeAt(randint(0, keys.length - 1)))
-    } else if (list.length == 3) {
-        inventory_3.setImage(list.removeAt(randint(0, keys.length - 1)))
-    } else if (list.length == 2) {
-        inventory_4.setImage(list.removeAt(randint(0, keys.length - 1)))
+function items () {
+    if (keys.length == 5) {
+        inventory_1.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 4) {
+        inventory_2.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 3) {
+        inventory_3.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 2) {
+        inventory_4.setImage(keys.removeAt(randint(0, keys.length - 1)))
     } else {
-        inventory_5.setImage(list.removeAt(randint(0, keys.length - 1)))
+        inventory_5.setImage(keys.removeAt(randint(0, keys.length - 1)))
     }
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
