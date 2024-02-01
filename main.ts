@@ -7,7 +7,7 @@ namespace SpriteKind {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level1`)
     player1.setPosition(120, 27)
-    for (let value1 of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
+    for (let value of tiles.getTilesByType(sprites.dungeon.darkGroundNorthEast1)) {
         if (Chest == sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -44,7 +44,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
                 b b b b b b b b b b b b b b b b 
                 . b b . . . . . . . . . . b b . 
                 `)
-            tiles.placeOnTile(Chest, ChestPosition.removeAt(randint(0, ChestPosition.length - 1)))
+            tiles.placeOnTile(Chest, chest_position.removeAt(randint(0, chest_position.length - 1)))
         } else {
             Chest = sprites.create(img`
                 . . b b b b b b b b b b b b . . 
@@ -64,7 +64,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
                 b b b b b b b b b b b b b b b b 
                 . b b . . . . . . . . . . b b . 
                 `, SpriteKind.chest_)
-            tiles.placeOnTile(Chest, ChestPosition.removeAt(randint(0, ChestPosition.length - 1)))
+            tiles.placeOnTile(Chest, chest_position.removeAt(randint(0, chest_position.length - 1)))
         }
     }
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
@@ -129,7 +129,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    if (Pickaxe.image.equals(img`
+    if (pickaxe.image.equals(img`
         . . . . . . . . . 5 . . . . . . 
         . . . . 5 . . . . 5 . . . 5 . . 
         . . . . 5 5 . . . 5 . 5 5 5 . . 
@@ -201,7 +201,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
             SpawnEnemies(Enemies)
         }
     }
-    ChestPosition = [
+    chest_position = [
     tiles.getTileLocation(13, 2),
     tiles.getTileLocation(3, 3),
     tiles.getTileLocation(4, 6),
@@ -230,8 +230,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, 
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    for (let value9 of sprites.allOfKind(SpriteKind.powerup)) {
-        if (value9.image.equals(img`
+    for (let value10 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value10.image.equals(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . d d d . 
             . . . . . . . . . . . d d 7 d . 
@@ -414,8 +414,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
-    for (let value7 of sprites.allOfKind(SpriteKind.powerup)) {
-        if (value7.image.equals(img`
+    for (let value8 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value8.image.equals(img`
             . . . . . 9 . . . . . . . . . . 
             . 9 9 . . . 9 . . . . 9 9 . . . 
             . . 9 9 . . 9 9 . . 9 9 . . . . 
@@ -446,20 +446,20 @@ info.onCountdownEnd(function () {
     game.gameOver(false)
 })
 function items () {
-    if (KeysList.length == 5) {
-        inventory_1.setImage(KeysList.removeAt(randint(0, KeysList.length - 1)))
-    } else if (KeysList.length == 4) {
-        inventory_2.setImage(KeysList.removeAt(randint(0, KeysList.length - 1)))
-    } else if (KeysList.length == 3) {
-        inventory_3.setImage(KeysList.removeAt(randint(0, KeysList.length - 1)))
-    } else if (KeysList.length == 2) {
-        inventory_4.setImage(KeysList.removeAt(randint(0, KeysList.length - 1)))
+    if (keys.length == 5) {
+        inventory_1.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 4) {
+        inventory_2.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 3) {
+        inventory_3.setImage(keys.removeAt(randint(0, keys.length - 1)))
+    } else if (keys.length == 2) {
+        inventory_4.setImage(keys.removeAt(randint(0, keys.length - 1)))
     } else {
-        inventory_5.setImage(KeysList.removeAt(randint(0, KeysList.length - 1)))
+        inventory_5.setImage(keys.removeAt(randint(0, keys.length - 1)))
     }
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
-    Pickaxe = sprites.create(img`
+    pickaxe = sprites.create(img`
         . . . . . . . . . 5 . . . . . . 
         . . . . 5 . . . . 5 . . . 5 . . 
         . . . . 5 5 . . . 5 . 5 5 5 . . 
@@ -487,8 +487,8 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
     game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
-    for (let value6 of sprites.allOfKind(SpriteKind.powerup)) {
-        if (value6.image.equals(img`
+    for (let value7 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value7.image.equals(img`
             . . . . . b . . . . . . . . . . 
             . b b . . . b . . . . b b . . . 
             . . b b . . b b . . b b . . . . 
@@ -574,8 +574,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
-    for (let value8 of sprites.allOfKind(SpriteKind.powerup)) {
-        if (value8.image.equals(img`
+    for (let value9 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value9.image.equals(img`
             . . . . . 9 . . . . . . . . . . 
             . 9 9 . . . 9 . . . . 9 9 . . . 
             . . 9 9 . . 9 9 . . 9 9 . . . . 
@@ -598,6 +598,33 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, 
             tiles.placeOnTile(player1, tiles.getTileLocation(7, 14))
             game.setGameOverMessage(true, "You Escaped!")
             game.gameOver(true)
+        }
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
+    for (let value6 of sprites.allOfKind(SpriteKind.powerup)) {
+        if (value6.image.equals(img`
+            . . . . . b . . . . . . . . . . 
+            . b b . . . b . . . . b b . . . 
+            . . b b . . b b . . b b . . . . 
+            . . . b . . . . . . . . . . . . 
+            . . . . . b b b b b . . . . . . 
+            . . . . . b . b . b . b b b b . 
+            b b b . . b b . b b . . . . . . 
+            . . . . . b . b . b . . . . . . 
+            . . . . . b b b b b . b . . . . 
+            . . b b . . . . b b . b b . . . 
+            . b b . . . . . b b . . b b . . 
+            . b . . . . . . b b . . . b . . 
+            . . . . . . . b b b . . . b . . 
+            . . . . . . . . b b . . . . . . 
+            . . . . . . . b b b . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)) {
+            tiles.setCurrentTilemap(tilemap`level24`)
+            tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+            SpawnEnemies(Enemies)
         }
     }
 })
@@ -682,7 +709,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
             `)) {
             tiles.setCurrentTilemap(tilemap`level3`)
             tiles.placeOnTile(sprite, tiles.getTileLocation(8, 14))
-            Couch = sprites.create(img`
+            couch = sprites.create(img`
                 ..cccc..........
                 .c7776c.........
                 c67776cccccccc..
@@ -732,11 +759,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
                 .ccccccccccccccc
                 .cbbc......cbbc.
                 `, SpriteKind.decoration)
-            tiles.placeOnTile(Couch, tiles.getTileLocation(1, 6))
+            tiles.placeOnTile(couch, tiles.getTileLocation(1, 6))
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             SpawnEnemies(Enemies)
         }
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(player1, tiles.getTileLocation(7, 1))
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    sprites.destroyAllSpritesOfKind(SpriteKind.decoration)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     for (let value0 of sprites.allOfKind(SpriteKind.powerup)) {
@@ -758,10 +791,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
             e 7 e e . . . e e . . . . . . . 
             e e e . . . . . . . . . . . . . 
             `)) {
-            HaveSword = "yes"
+            havesword = "yes"
         }
     }
-    if (HaveSword == "yes") {
+    if (havesword == "yes") {
         if (controller.A.isPressed()) {
             animation.runImageAnimation(
             player1,
@@ -840,34 +873,34 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
             sprites.destroy(otherSprite)
             info.changeScoreBy(1)
         } else {
-            StatusBarPlayer1.value += -1
+            statusbarplayer1.value += -1
             pause(100)
         }
     } else {
-        StatusBarPlayer1.value += -1
+        statusbarplayer1.value += -1
         pause(100)
     }
 })
-let HaveSword = ""
-let Couch: Sprite = null
+let havesword = ""
+let couch: Sprite = null
 let Creatures: Sprite = null
-let ChestPosition: tiles.Location[] = []
-let Pickaxe: Sprite = null
+let chest_position: tiles.Location[] = []
+let pickaxe: Sprite = null
 let Chest: Sprite = null
 let Enemies: Image[] = []
-let KeysList: Image[] = []
+let keys: Image[] = []
 let inventory_5: Sprite = null
 let inventory_4: Sprite = null
 let inventory_3: Sprite = null
 let inventory_2: Sprite = null
 let inventory_1: Sprite = null
 let player1: Sprite = null
-let StatusBarPlayer1: StatusBarSprite = null
+let statusbarplayer1: StatusBarSprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 info.setScore(0)
-StatusBarPlayer1 = statusbars.create(100, 4, StatusBarKind.Health)
-StatusBarPlayer1.attachToSprite(player1)
-StatusBarPlayer1.positionDirection(CollisionDirection.Bottom)
+statusbarplayer1 = statusbars.create(100, 4, StatusBarKind.Health)
+statusbarplayer1.attachToSprite(player1)
+statusbarplayer1.positionDirection(CollisionDirection.Bottom)
 inventory_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -958,7 +991,7 @@ inventory_5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
-KeysList = [
+keys = [
 img`
     . . . . . 5 . . . . . . . . . . 
     . 5 5 . . . 5 . . . . 5 5 . . . 
@@ -1174,7 +1207,7 @@ player1 = sprites.create(img`
 tiles.placeOnTile(player1, tiles.getTileLocation(7, 8))
 controller.moveSprite(player1)
 scene.cameraFollowSprite(player1)
-Pickaxe = sprites.create(img`
+pickaxe = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -1193,7 +1226,7 @@ Pickaxe = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.powerup)
 game.onUpdate(function () {
-    Pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - -45, scene.cameraProperty(CameraProperty.Y) - 50)
+    pickaxe.setPosition(scene.cameraProperty(CameraProperty.X) - -45, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_1.setPosition(scene.cameraProperty(CameraProperty.X) - 70, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_2.setPosition(scene.cameraProperty(CameraProperty.X) - 55, scene.cameraProperty(CameraProperty.Y) - 50)
     inventory_3.setPosition(scene.cameraProperty(CameraProperty.X) - 40, scene.cameraProperty(CameraProperty.Y) - 50)
